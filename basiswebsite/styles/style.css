@@ -1,31 +1,853 @@
-/**************/
-/* CSS REMEDY */
-/**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+
+/* RESET      */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
+/* custom properties,/ var kleuren*/
 
-
-
-
-
-/*********************/
-/* CUSTOM PROPERTIES */
-/*********************/
 :root {
-	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+  --bg: #fff;
+  --text: #111;
+  --panel: #f6f7f9;
+  --border: #e5e7eb;
+  --brand-blue: #1792E1;   /* helder Coolblue-blauw */
+  --brand-orange: #FF5E00; /* oranje accent */
+  --brand-darkblue: #3768b1;
+}
+
+/* BASIS STYLING */
+
+img { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
+ul { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
+
+/*Blauwe balk strakker */
+header nav{
+  background: var(--brand-blue);
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* links | midden | rechts */
+  column-gap: .4rem;          
+  padding: 0 .65rem;          
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* hamburgerr */
+header nav > button{
+  justify-self: start;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 2.4rem;          /* formaat icoon */
+  padding: .15rem;            /* bijna geen padding → hoger ogen */
+  transform: translateY(-6px);/* nog net iets hoger */
+}
+
+/* logo */
+header nav > a{
+  margin-left: 6em;
+}
+header nav > a img{
+  width: 65px;                /* vaste maat logo */
+  display: block;
+  margin-top: -11px;          /* duwt het logo omhoog zodat de bovenrand net uit beeld valt */
+  transform: translateY(-4px);/* nog iets hoger */
+  margin-bottom: -10px;
+}
+
+/* iconen rechts */
+header nav > ul{
+  display: flex;
+  gap: .26rem;                /* kleinere gap tussen iconen */
+  transform: translateY(8px); /* visueel hoger */
+}
+header nav > ul a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;                /* kleiner klikvlak */
+  height: 28px;
+}
+header nav > ul img{
+  width: 26px;                /* iconen compacter */
+  height: 26px;
+}
+
+
+/* visueel hidden stukje */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; 
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap; 
+  border: 0;
+}
+
+
+/* de zoekbalk co ntainer
+/* (eerste section in header) */
+
+header > section:first-of-type {
+  background: #f6f5f5;
+  padding: 0.3em 0.3em; 
+}
+
+/* zoek formulier in die section */
+header > section:first-of-type form {
+  display: flex;
+  gap: 0em;
+}
+
+/* zoekveld */
+header > section:first-of-type input[type="search"] {
+  flex: 1;
+  height: 2.75em;
+  padding: 0 0.75em;
+  border: 0.01em solid var(--border);
+  font-size: 1em;
+  border-radius: 0.3em 0 0 0.3em; 
+}
+
+/* zoekknop */
+header > section:first-of-type button {
+  height: 2.73em;
+  padding: 0 em;
+  border: 0.0625em solid var(--brand-blue);
+  border-radius: 0 0.75em 0.75em 0; 
+  background: var(--brand-blue);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+
+/* usp balk  */
+
+.usp {
+  position: relative;
+  height: 2em;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  margin-top: 1em;
+  margin-bottom: .65em;   /* ruimte ONDER de USP */
+}
+.usp strong { color: var(--brand-orange); font-weight: 700; }
+
+.usp li {
+  position: absolute;
+  top: 0; right: -120%;   /* start rechts buiten beeld */
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  animation: slide 9s ease-in-out infinite;
+}
+.usp li:nth-child(1) { animation-delay: 0s; }
+.usp li:nth-child(2) { animation-delay: 3s; }
+.usp li:nth-child(3) { animation-delay: 6s; }
+
+@keyframes slide {
+  0%   { right: -120%; opacity: 0; }
+  10%  { right: 0;     opacity: 1; }   /* schuift in */
+  30%  { right: 0;     opacity: 1; }   /* blijft even staan */
+  40%  { right: 120%;  opacity: 0; }   /* schuift uit */
+  100% { right: 120%;  opacity: 0; }
+}
+
+
+/* Back to school carrousel */
+
+
+/* lijst met slides in de sections */
+main > section:nth-of-type(1) > ul {
+  display: flex;
+  gap: 1em;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-blue) transparent;
+}
+
+/* elke slide */
+main > section:nth-of-type(1) > ul > li {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+/* Afbeeldingen zelfde hoogte */
+main > section:nth-of-type(1) > ul > li img {
+  margin-top: -1em;
+  width: 100%;
+  display: block;
+  border-radius: 0 0 .5em .5em; /* alleen onderranden rond */
+}
+
+/* Link onder de carrousel */
+main > section:nth-of-type(1) > a[href*="/deals"] {
+  display: inline-block;
+  margin: .5em 0 0;
+  text-decoration: none;
+  color: var(--brand-blue);
+  font-weight: 600;
+}
+
+
+/* 2. CARROUSEL AEG/JBL/Oppo */
+
+main > section:nth-of-type(2) > ul {
+  display: flex;                 
+  overflow-x: auto;              
+  overflow-y: hidden;            
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;       
+  overscroll-behavior-x: contain;
+  gap: 1rem;
+  scrollbar-width: none;
+  scrollbar-color: var(--brand-blue) #ddd;
+}
+
+
+/* elke LI */
+main > section:nth-of-type(2) > ul > li {
+  flex-basis: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+/* AEG artikel*/
+main > section:nth-of-type(2) > ul > li > article {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: .5em 1em;
+  background: var(--panel);
+  border: 0.0625em solid var(--border);
+  min-height: 100px;
+  margin-top: 2em;
+  margin-left: 1em;
+  margin-right: 4.5em;
+}
+
+/* “Aanbieding/(eerste p) */
+main > section:nth-of-type(2) > ul > li > article > p:first-of-type {
+  font-size: 0.8em;
+  font-weight: 700;
+  color: var(--brand-orange);
+  background: #FFE8D9;              
+  padding: .15em 0.55em;
+  border-radius: 0.4em;
+  margin: 0 0 .35em 0;
+  margin-top: -5em;
+}
+
+/* 2) merkregel:(tweede p)grijzig, */
+main > section:nth-of-type(2) > ul > li > article > p:nth-of-type(2) {
+  margin-top: -1em;
+  font-size: .85em;
+  color: #6b7280;
+  letter-spacing: .06em;
+  margin-left: -6em;
+}
+
+/* 3) H3 */
+main > section:nth-of-type(2) > ul > li > article h3 {
+  color: var(--brand-blue);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-left: -2em;
+  margin-top: 1.5em;
+}
+
+/* 4) extra tekstregels “Nu met korting”) */
+main > section:nth-of-type(2) > ul > li > article > p:nth-of-type(n+3) {
+  color: #374151;
+  font-size: .95em;
+  margin-bottom: -3em;
+  margin-left: -7em;
+
+}
+
+/* productbeeld rechts */
+main > section:nth-of-type(2) > ul > li > article > img {
+  width: 70px;
+  height: auto;
+}
+
+/*jbl*/
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: .5em 1em;
+  background: var(--panel);
+  border: 0.0625em solid var(--border);
+  min-height: 100px;
+  margin-top: 2em;
+  margin-left: -4.8em;
+  margin-right: 4.5em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:first-of-type {
+  font-size: 0.8em;
+  font-weight: 700;
+  color: var(--brand-orange);
+  background: #FFE8D9;
+  padding: .15em 0.55em;
+  border-radius: 0.4em;
+  margin: 0 0 .35em 0;
+  margin-top: -5em;
+  margin-left: -3.5em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:nth-of-type(2) {
+  margin-top: -1em;
+  font-size: .85em;
+  color: #6b7280;
+  letter-spacing: .06em;
+  margin-left: -3.5em;
+  
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article h3 {
+  color: var(--brand-blue);
+  font-size: 1.1em;
+  margin-left: -1em;
+  margin-top: 1.5em;
+
+
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:nth-of-type(n+3) {
+  color: #374151;
+  font-size: .95em;
+  margin-bottom: -3em;
+  margin-left: -7em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > img {
+  width: 70px;
+  
+}
+
+
+/* 3. Oppo   */
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: .5em 1em;
+  background: var(--panel);
+  border: 0.0625em solid var(--border);
+  min-height: 100px;
+  margin-top: 2em;
+  margin-left: 1em;
+  margin-right: 2em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:first-of-type {
+  font-size: .8em;
+  font-weight: 700;
+  color: var(--brand-orange);
+  background: #FFE8D9;
+  padding: .15em .55em;
+  border-radius: .4em;
+  margin: 0 0 .35em 0;
+  margin-top: -5em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:nth-of-type(2) {
+  margin-top: -1em;
+  font-size: .85em;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-left: -6em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article h3 {
+  color: var(--brand-blue);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-left: -2em;
+  margin-top: 1.5em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:nth-of-type(n+3) {
+  color: #374151;
+  font-size: .95em;
+  margin-bottom: -3em;
+  margin-left: -7em;
+}
+
+main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > img {
+  width: 70px;
+  height: auto;
 }
 
 
 
+/* CATEGORIEËN BLOKKEN    */
+main > section:nth-of-type(3) > h2 {
+  margin: 1em;               
+  font-size: 1.05em;         
+  font-weight: 650;          
+  color: var(--text);       
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2em;
+}
 
 
-/****************/
-/* JOUW STYLING */
-/****************/
+/* de lijst met categorie-blokken */
+main > section:nth-of-type(3) > ul {
+  display: flex;             
+  flex-wrap: wrap;            /* als er geen ruimte is, gaan blokken naar de volgende regel */
+  gap: 1em;                   
+  margin: 1em;                
+  list-style: none;          
+  padding: 0;                 
+}
 
-/* jouw code */
+/* elk categorie-blok */
+main > section:nth-of-type(3) > ul > li {
+  flex: 1 1 calc(50% - 1em);  /* 2 blokken naast elkaar, elk ~50% breed */
+  background: var(--panel);   
+  border: 0.02em solid #cbd5e1;  
+  border-radius: .2em;        
+  padding: 1em;               
+  text-align: center;        
+}
+
+/* de afbeelding in elk blok */
+main > section:nth-of-type(3) > ul > li img {
+  width: 200px;                
+  margin: 0 auto .9em auto;   
+  border-radius: 1em;
+}
+
+/* de titel (h3) van elk blok */
+main > section:nth-of-type(3) > ul > li h3 {
+  margin: 0.25em 0 0 0;        /* ruimte boven de titel */
+  color: var(--brand-darkblue);   
+  font-size: 0.85em;             
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main > section:nth-of-type(3) > ul > li a {
+  text-decoration: none;      
+}
+
+/* hover-effect voor het hele blok */
+main > section:nth-of-type(3) > ul > li:hover {
+  background: #f0f9ff;       
+  border-color: var(--brand-blue);
+}
+
+/* “Bekijk het volledige assortiment”link */
+main > section:nth-of-type(3) > ul > a {
+  flex: 1 1 100%;             /* pakt de volledige breedte */
+  text-align: center;         
+  margin-top: -0.3em;           
+  color: var(--brand-blue);   
+  font-weight: 500;           
+  text-decoration: none;      
+  font-family: Helvetica, sans-serif;
+  margin-left: -11.6em;
+  font-size: small;
+}
+
+
+main > section:nth-of-type(4) > h2 {
+  margin: 1em;                          
+  margin-top: 2em;                      
+  font-size: 1.05em;                    
+  font-weight: 650;                    
+  color: var(--text);               
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* MERKEN-CARROUSEL*/
+
+
+main > section:nth-of-type(4) > ul {
+  display: flex;                 
+  overflow-x: auto;              
+  overflow-y: hidden;            
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;       
+  overscroll-behavior-x: contain;
+  gap: 1rem;                     
+  scrollbar-width: none;         
+  padding-left: 1em;            
+}
+
+/* elk LI  */
+main > section:nth-of-type(4) > ul > li {
+  flex: 0 0 80%;     /* hoeveel ruimte er van de boxes naast elkaar zitten*/            
+  scroll-snap-align: center;     
+  background: var(--panel);      
+  border: 0.02em solid #cbd5e1;  
+  border-radius: .2em;           
+  padding: 0.4em;                  
+  min-height: 400px;             
+  box-sizing: border-box; 
+  
+}
+
+/* afbeelding in het blok */
+main > section:nth-of-type(4) > ul > li img {
+  width: 300px;                  
+  margin-bottom: .8em;           
+  background: #f0f9ff;           
+  padding: .3em;                
+}
+
+/* titel van het blok */
+main > section:nth-of-type(4) > ul > li h3 {
+  color: var(--brand-darkblue);  
+  font-weight: 650;              
+  font-size: 0.9em;              
+  margin: .5em 0;                
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: .4em;
+  text-decoration: none;
+  
+}
+
+/* gewone tekst onder de titel */
+main > section:nth-of-type(4) > ul > li p {
+  color: var(--text);            
+  font-size: .85em;              
+  margin-bottom: .6em;           
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: .4em;
+}
+
+/* deeplink-lijst onderin */
+main > section:nth-of-type(4) > ul > li ul {
+  list-style: none;              
+  padding: 0;
+  margin: 0;
+}
+main > section:nth-of-type(4) > ul > li ul li a {
+  text-decoration: none;         
+  color: var(--brand-blue);      
+  font-size: 1.0 em;               
+  display: block;                /* elke link op eigen regel */
+  margin-bottom: .25em;          
+
+}
+
+main > section:nth-of-type(4) > ul > li > a {
+  text-decoration: none;                        
+}
+main > section:nth-of-type(4) > a {
+  display: block;            
+  margin: .5em 1em 0;           
+  color: var(--brand-blue);     
+  text-decoration: none;        
+  font-weight: 600;             
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+main > section:nth-of-type(5) > h2 {
+  margin: 1em;                         
+  margin-top: 2.8em;                      
+  font-size: 1.1em;                     
+  font-weight: 650;                     
+  color: var(--text);                   
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ondertitel / korte uitleg */
+main > section:nth-of-type(5) > p {
+  margin: 0 1em 1em 1em;                
+  font-size: 0.9em;                     
+  color: #374151;                       
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: -0.3em;
+  margin-left: 1.3em;
+}
+
+/* prijs + beschrijving binnen de kaarten */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > p {
+  font-size: 0.85em;                   
+  color: #374151;                       
+  margin: 0.2em 0;                      
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Alleen de EERSTE ul in deze sectie is de carrousel */
+main > section:nth-of-type(5) > ul:nth-of-type(1){
+  display:flex;                 
+  overflow-x:auto;              
+  overflow-y:hidden;            /* geen verticale scrollbar */
+  scroll-snap-type:x mandatory; 
+  scroll-behavior:smooth;       
+  overscroll-behavior-x:contain;
+  gap:1rem;                     
+  padding-left: 1.0em;            
+  scrollbar-width:none;         /* scrollbar verbergen */
+  margin-top: -9em;
+}
+
+
+/* Elke kaart/slide binnen die UL */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li{
+  flex:0 0 80%;                 
+  scroll-snap-align:center;    
+}
+
+/* De kaart zelf (article) */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(1) > article {
+  background: var(--panel);
+  border: 0.02em solid #cbd5e1;  /* dunne rand */
+  border-radius: .2em;
+  padding: 1em;
+  box-sizing: border-box;
+  min-height: 210px;
+}
+
+/* 2e kaart */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(2) > article {
+  background: var(--panel);
+  border: 0.02em solid #cbd5e1;
+  border-radius: .2em;
+  padding: 2.45em;
+  box-sizing: border-box;
+  min-height: 210px;
+}
+
+/* 3e kaart */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(3) > article {
+  background: var(--panel);
+  border: 0.02em solid #cbd5e1;
+  border-radius: .2em;
+  padding: 1em;
+  box-sizing: border-box;
+  min-height: 150px;
+}
+
+/* Afbeelding in de kaart */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > img{
+  width:150px;
+  height:auto;
+  display:block;
+  margin-bottom:.6em;
+  border-radius:.2em;
+}
+
+/* Titel-link */
+main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > a{
+  text-decoration:none;
+  color: var(--brand-blue);
+}
+
+/* 2) 2img UL */
+main > section:nth-of-type(5) > section:nth-of-type(1) > ul{
+  display:flex; 
+  overflow-x:auto; 
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory; 
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain; 
+  gap:1rem; 
+  padding-left:.5em;
+  scrollbar-width:none;
+  margin-top: 2em;
+}
+
+main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li{
+  flex:0 0 90%;
+  scroll-snap-align:center;
+  background:var(--panel);
+   border:0.02em solid #cbd5e1; 
+   border-radius:.2em; 
+}
+main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li img{
+  width:100%; 
+  display:block; 
+  border-radius:.2em;
+}
+main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li:last-of-type{
+  margin-right: .6em; 
+}
+
+
+
+/* titel */
+main > section:nth-of-type(5) > section:nth-of-type(2) > h2{
+  margin:1em;
+  margin-top:2em;
+  font-size:1.05em;
+  font-weight:650;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* bovenste img/a) */
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(1) > img{
+  display:block;
+  width:calc(100% - 2em);
+  margin:0 1em 1em;
+  border-radius:.3em;
+}
+
+/* voordeelblok 1 en voordeelblok 2  */
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2),
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3){
+  display: grid;
+  grid-template-columns: 110px 1fr;   /* links = img, rechts = tekst */
+  grid-template-rows: auto auto;      /* rij 1 = h3, rij 2 = p */
+  column-gap: 0.75em;
+  text-decoration: none;
+  color: var(--brand-darkblue);
+  margin: 0 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > img,
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > img{
+  grid-row: 1 / 3;        /* loopt over beide rijen */
+  grid-column: 1;         /* staat links */
+}
+
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > h3,
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > h3{
+  grid-row: 1;            /* eerste rij, rechts */
+  grid-column: 2;
+  margin: 0 0 .25em 0;
+  color: rgb(var(--brand-darkblue));
+  font-weight: 650;
+  font-size: .95em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > p,
+main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > p{
+  grid-row: 2;            /* tweede rij, rechts */
+  grid-column: 2;
+  margin: 0;
+  color: var(--text);
+  font-size: .9em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* BEST VERKOCHT (genest) */
+
+
+/* titel: zwart */
+main > section:nth-of-type(5) > section:nth-of-type(3) > h2{
+  margin:1em;
+  font-size:1.05em;
+  font-weight:650;
+  color:#000;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* lijst als onzichtbare carrousel */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul{
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  gap:1rem;
+  padding:0 1em;              /* witruimte links én rechts zodat laatste niet plakt */
+  scrollbar-width:none;
+}
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul::-webkit-scrollbar{display:none}
+
+/* slides */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li{
+  flex:0 0 90%;               
+  scroll-snap-align:center;
+}
+
+/* kaart */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article{
+  padding:1em;
+  border-bottom:1px solid rgba(0,0,0,.15); /* lichte zwarte streep onder elk blok */
+  box-sizing:border-box;
+}
+
+/* hele kaart klikbaar, geen underline */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
+/* afbeelding */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > img{
+  width:140px;
+  height:auto;
+  display:block;
+  margin-bottom:.5em;
+  border-radius:.2em;
+}
+
+/* beschrijving/inruiltekst (1e p)oranje  */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(1){
+  font-size:.85em;
+  font-weight:600;
+  color: var(--brand-orange);
+  background:#FFE8D9;
+  display:inline-block;      /* zodat het een badge/vlakje wordt */
+  padding:.15em .55em;
+  border-radius:.4em;
+  margin:.25em 0 .6em 0;
+}
+
+/* producttitel (h3) – Coolblue-blauw */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > h3{
+  color: var(--brand-darkblue);
+  font-weight:650;
+  font-size:.95em;
+  font-family:Arial, Helvetica, sans-serif;
+  margin:.4em 0 .6em 0;
+}
+
+/* reviews (2e p)  */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(2){
+  color: var(--brand-blue);
+  font-size:.9em;
+  margin:0 0 .8em 0;
+}
+
+/* prijs (3e p) */
+main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(3){
+  margin-top:1em;
+  color:#000;
+  font-weight:700;
+  font-size:1em;
+}
 

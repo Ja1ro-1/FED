@@ -1,242 +1,362 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coolblue homepagina – FED2526</title>
 
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Coolblue homepagina – FED2526</title>
+	<link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <button type="button">☰</button> <!-- hamburger menu knop -->
+	<header>
+		<nav>
+			<button type="button">☰</button> <!-- hamburger menu knop -->
 
-    <a href="/">
-      <img src="images/Logo-coolblue-500x500.jpg" alt="Coolblue">
-    </a>
+			<a href="/">
+				<img src="images/cool.png" alt="Coolblue">
+			</a>
 
-    <ul>
-      <li>
-        <a href="/account">
-          <img src="/images/accounticoon.png" alt="Account">
+			<ul>
+				<li>
+					<a href="/account">
+						<img src="images/accounticoon.png" alt="Account">
+					</a>
+				</li>
+				<li>
+					<a href="/favorieten">
+						<img src="images/hartjeicoon.png" alt="Favorieten">
+					</a>
+				</li>
+				<li>
+					<a href="/winkelmandje">
+						<img src="images/winkelwagenicoon.jpg" alt="Winkelwagen">
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+<section>
+  <h2 class="visually-hidden">Zoeken</h2>
+  <form action="/zoeken" method="get" role="search">
+    <label for="q" class="visually-hidden">Zoekterm</label>
+    <input id="q" name="q" type="search" placeholder="zoeken naar..." required>
+    <button type="submit"><?xml version="1.0"?><svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 22 22" width="30px" height="24px">    <path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 20 22 L 22 20 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z"/></svg></button>
+  </form>
+</section>
+
+		<section>
+  <ul class="usp">
+    <li>Voor <strong>23.59 uur</strong> besteld, <strong>morgen</strong> in huis</li>
+    <li><strong>Gratis</strong> ruilen binnen 30 dagen</li>
+    <li> 20 echte winkels voor advies en service</li>
+  </ul>
+</section>
+	</header>
+
+	
+	<main>
+
+ <section>
+  <h2 class="visually-hidden">Back to School deals</h2>
+
+  <ul>
+	
+    <li>
+      <article>
+        <img src="images/coolbluefoto2.png" alt="Plaatje van de back to school deals">
+      </article>
+    </li>
+    <li>
+      <article>
+        <a href="#">
+          <img src="images/iphone17.jpeg" alt="iPhone 17">
         </a>
-      </li>
-      <li>
-        <a href="/favorieten">
-          <img src="images/hartjeicoon.png" alt="Favorieten">
-        </a>
-      </li>
-      <li>
-        <a href="/winkelmandje">
-          <img src="images/winkelwagenicoon.jpg" alt="Winkelwagen">
-        </a>
-      </li>
-    </ul>
-  </nav>
+      </article>
+    </li>
+  </ul>
+</section>
 
   <section>
-    <form action="/zoeken" method="get">
-      <input type="search" name="q">
-      <button type="submit">Zoek</button>
-    </form>
-  </section>
-
-  <section>
-    <ul>
-      <li>Vandaag besteld, morgen bezorgd</li>
-      <li>Gratis ruilen binnen 30 dagen</li>
-      <li>Bezoek onze winkels</li>
-    </ul>
-  </section>
-</header>
-
-<main>
-
-  <section>
-    <h1>Back to school deals</h1>
-    <ul>
-      <li>
-        <article>
-          <p>Klasse</p>
-          <img src="images/backtoschool.png" alt="Plaatje van de back to school deals">
-          <a href="/deals">Bekijk nu de deals</a>
-        </article>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Aanbiedingen</h2>
     <ul>
       <li>
         <article>
           <p>Aanbieding</p>
           <p>AEG</p>
-          <a href="/product/aeg-witgoed">
-            <h3>AEG Witgoed</h3>
-          </a>
+		  <h3>AEG Witgoed</h3> <!-- eigen heading -->
           <p>Nu met korting</p>
           <img src="images/Aegwitgoed.png" alt="AEG wasmachine">
         </article>
       </li>
-      <!-- meer li-items voor andere aanbiedingen -->
-    </ul>
-  </section>
-
-  <section>
-    <h2>Blader door onze categorieën</h2>
-    <ul>
-      <li>
-        <img src="images/computersentablets.png" alt="Computers en tablets">
-        <a href="/computers"><h3>Computers & tablets</h3></a>
-        <a href="/computers">Bekijk het assortiment</a>
-      </li>
-
-      <li>
-        <img src="images/beeldengeluid.png" alt="Beeld en geluid">
-        <a href="/beeld"><h3>Mobiele telefoons</h3></a>
-        <a href="/beeld">Bekijk het assortiment</a>
-      </li>
-      <!-- meer li-items -->
-    </ul>
-  </section>
-
-  <section>
-    <h2>Ontdek de verschillende merken</h2>
-    <ul>
-      <li>
-        <img src="images/eufy.jpeg" alt="Eufy product">
-        <a href="/merken/eufy"><h3>Bekijk de wereld van Eufy</h3></a>
-        <p>
-          Van videobellen tot robotstofzuigers: met Eufy heb je een slim, beveiligd huis. 
-          Houd een oogje in het zeil en bedien je apparaten vanuit een app.
-        </p>
-        <ul>
-          <li><a href="/merken/eufy/beveiligingscameras">Eufy beveiligingscamera’s</a></li>
-          <li><a href="/merken/eufy/lampen">Eufy smart lampen</a></li>
-          <li><a href="/merken/eufy/robotmaaiers">Eufy robotmaaiers</a></li>
-          <li><a href="/merken/eufy/robotstofzuigers">Eufy robotstofzuigers</a></li>
-          <li><a href="/merken/eufy/deurbellen">Eufy deurbellen</a></li>
-        </ul>
-        <a href="/merken">Bekijk alle merken</a>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Bekijk nu onze Back to School-deals</h2>
-    <p>Meesterlijke kortingen op laptops, tablets en een heleboel accessoires.</p>
-    <img src="images/achtergrond.jpg" alt="Back to School sfeerbeeld">
-
-    <ul>
       <li>
         <article>
-          <img src="images/remarkablepro.png" alt="ReMarkable Paper Pro">
-          <a href="/product/remarkable-paper-pro"><h3>ReMarkable Paper Pro Move</h3></a>
-          <p>0 reviews</p>
-          <p>€ 529,-</p>
-          <p>Maak overal gemakkelijk notities</p>
+          <h3>JBL Grip</h3> <!-- eigen heading -->
+          <p>Nieuw</p>
+          <p>JBL</p>
+          <img src="images/jblgrip.png" alt="JBL Grip">
+        </article>
+      </li>
+      <li>
+        <article>
+          <h3>Oppo Reno 14 256GB</h3> <!-- eigen heading -->
+          <p>Nieuw</p>
+          <a href="#">Bekijk product</a>
+          <p>Nieuw bij Coolblue</p>
+          <img src="images/oppo_reno.webp" alt="Oppo Reno 14 256GB">
         </article>
       </li>
     </ul>
   </section>
 
-  <section>
-    <ul>
-      <li>
-        <img src="images/verjaardagscadeau.png" alt="Cadeaukaart">
-        <a href="/cadeaukaart"><p>Bestel nu je cadeaukaart</p></a>
-      </li>
-      <!-- meer li-items -->
-    </ul>
-  </section>
 
-  <section>
-    <h2>Word klant bij Coolblue Energie</h2>
 
-    <!-- grote beeld + link -->
-    <img src="images/coolblueenergie.jpeg" alt="Energie promotie">
-    <a href="/energie">Ontdek meer</a>
+		<section>
+			<h2>Blader door onze categorieën</h2>
+			<ul>
+				<li>
+					<img src="images/computersentablets.png" alt="Computers en tablets">
+					<a href="/computers">
+						<h3>Computers & tablets</h3>
+					</a>
+					
+				</li>
 
-    <!-- voordeelblok 1 -->
-    <a href="/energie/korting-witgoed">
-      <img src="images/bankfoto.jpeg" alt="Bankfoto">
-      <h3>Korting op energiezuinige producten</h3>
-      <p>Bespaar op je wasmachine of slimme stekkers en daarna op je energierekening.</p>
-    </a>
+				<li>
+					<img src="images/beeldengeluid.png" alt="Beeld en geluid">
+					<a href="/beeld">
+						<h3>Mobiele telefoons</h3>
+					</a>
+					
+				</li>
+				<li>
+					<img src="images/telefonie.png" alt="telefonie">
+					<a href="/telefonie">
+						<h3>Telefonie</h3>
+					</a>
+					
+				</li>
+				<li>
+					<img src="images/huishouden&wonen.png" alt="huishouden en wonen">
+					<a href="/#">
+						<h3>Huishouden & wonen</h3>
+					</a>
+				</li>
+				<a href="/#" >> Bekijk het volledige assortiment</a>
+				
+			</ul>
+		</section>
 
-    <!-- voordeelblok 2 -->
-    <a href="/energie/voordeel-2">
-      <img src="images/monteerfoto.jpeg" alt="monteerfoto">
-      <h3>Nog een voordeel</h3>
-      <p>Korte uitleg over dit tweede voordeel.</p>
-    </a>
-  </section>
+		<section>
+			<h2>Ontdek de verschillende merken</h2>
+			<ul>
+				<li>
+					<img src="images/eufy.jpeg" alt="Eufy product">
+					<a href="/merken/eufy">
+						<h3>Bekijk de wereld van Eufy</h3>
+					</a>
+					<p>
+						Van videobellen tot robotstofzuigers: met Eufy heb je een slim, beveiligd huis.
+						Houd een oogje in het zeil en bedien je apparaten vanuit een app.
+					</p>
+					<ul>
+						<li><a href="/merken/eufy/beveiligingscameras">Eufy beveiligingscamera’s</a></li>
+						<li><a href="/merken/eufy/lampen">Eufy smart lampen</a></li>
+						<li><a href="/merken/eufy/robotmaaiers">Eufy robotmaaiers</a></li>
+						<li><a href="/merken/eufy/robotstofzuigers">Eufy robotstofzuigers</a></li>
+						<li><a href="/merken/eufy/deurbellen">Eufy deurbellen</a></li>
+					</ul>
+					
+				</li>
 
-  <section>
-    <h2>Best verkocht</h2>
-    <ul>
-      <li>
-        <article>
-          <a href="/product/airpods-pro-2">
-            <img src="images/airpodspro.png" alt="Apple AirPods Pro 2">
-            <p>Tot 10 euro aan inruilwaarde</p>
-            <h3>Apple AirPods Pro 2</h3>
-            <p>305 reviews</p>
-            <p>€ 249,-</p>
-          </a>
-        </article>
-      </li>
-      <!-- meer li-items voor andere bestsellers -->
-    </ul>
-  </section>
+				<li>
+					<img src="images/bekijkdewereldvanapple.jpeg" alt="bekijk de wereld van apple">
+					<a href="#">
+						<h3>Bekijk de wereld van apple</h3>
+					</a>
+					<p>
+						Bij Apple weet je een ding zeker: alles werkt zoals het hoort. Dankzij het Apple ecosysteem werken de producten onderling naadloos met elkaar samen.
+					</p>
+					<ul>
+						<li><a href="#">Macbook</a></li>
+						<li><a href="#">Iphone</a></li>
+						<li><a href="#">Apple watch</a></li>
+						<li><a href="/#">Ipad</a></li>
+						<li><a href="/#">Mac</a></li>
+					</ul>
+					
+				</li>
+				<li>
+					<img src="images/bekijkdewereldvanwisberg.jpeg" alt="bekijk de wereld van wisberg">
+					<a href="#">
+						<h3>Bekijk de wereld van apple</h3>
+					</a>
+					<p>
+					Wisberg biedt energiezuinige producten die het dagelijks leven een stuk gemakkelijker maken. Of je nu een wasmachine, droger, koelkast of vriezer zoekt: met Wisberg heb je altijd een slimme oplossing in huis.
+					</p>
+					<ul>
+						<li><a href="#">Wisberg wasdrogers</a></li>
+						<li><a href="#">Wisberg koelkasten</a></li>
+						<li><a href="#">Wisberg vriezers</a></li>
+						<li><a href="/#">Wisberg wasmachines</a></li>
+					</ul>
+				</li>
+			</ul>
+			<a href="#">>Bekijk alle merken</a>
+		</section>
 
-</main>
+		<section>
+			<h2>Bekijk nu onze Back to School-deals</h2>
+			<p>Meesterlijke kortingen op laptops, tablets en een heleboel accessoires.</p>
+			<img src="images/achtergrondaandachttrekkers.png" alt="Back to School achtergrond">
+			
+			<!-- 1) CARROUSEL: alléén deze UL -->
+			<ul>
+			  <li>
+				<article>
+				  <img src="images/remarkablepro.png" alt="ReMarkable Paper Pro">
+				  <a href="/product/remarkable-paper-pro"><h3>ReMarkable Paper Pro Move</h3></a>
+				  <p>0 reviews</p>
+				  <p>€ 529,-</p>
+				  <p>Maak overal gemakkelijk notities</p>
+				</article>
+			  </li>
+			  <li>
+				<article>
+				  <img src="images/inventumOV607B.jpeg" alt="Inventum OV607B">
+				  <a href="#"><h3>Inventum OV607B</h3></a>
+				  <p>94 reviews</p>
+				  <p>€ 170,-</p>
+				  <p>Deze mini-oven past perfect</p>
+				</article>
+			  </li>
+			  <li>
+				<article>
+				  <img src="images/rayzor60.png" alt="Motorola Razr 60">
+				  <a href="#"><h3>Motorola Razr 60 256GB Swarovski 5G</h3></a>
+				  <p>94 reviews</p>
+				  <p>€ 170,-</p>
+				  <p>Deze mini-oven past perfect</p>
+				</article>
+			  </li>
+			</ul>
+			
+			<!-- 2) GEEN carrousel: eigen sectie eronder -->
+			<section>
+			  <ul>
+				<li>
+				  <article>
+					<a href="/cadeaukaart">
+					  <img src="images/verjaardagscadeau.png" alt="Cadeaukaart">
+					</a>
+				  </article>
+				</li>
+				<li>
+				  <article>
+					<a href="#">
+					  <img src="images/gratiswassenendrogen.jpeg" alt="Gratis wassen en drogen">
+					</a>
+				  </article>
+				</li>
+			  </ul>
+			</section>
 
- <footer>
-    <nav>
-      <ul>
-        <li><a href="/assortiment">Ons assortiment</a></li>
-        <li><a href="/bedrijfswebsite">Bedrijfswebsite</a></li>
-        <li><a href="/klantenservice">Klantenservice</a></li>
-        <li><a href="/zakelijk">Zakelijk</a></li>
-        <li><a href="/winkels">Onze winkels</a></li>
-        <li><a href="/over">Over Coolblue</a></li>
-        <li><a href="/werken-bij">Werken bij Coolblue</a></li>
-        <li><a href="/inloggen">Inloggen</a></li>
-      </ul>
-    </nav>
+		<section>
+			<h2>Word klant bij Coolblue Energie</h2>
+<a href="#">
+	<img src="images/coolblueenergie.jpeg" alt="Energie promotie">
+</a>
+			
 
-    <section>
-      <ul>
-        <li><a href="#"><img src="images/ideallogo.png" alt="iDEAL"></a></li>
-        <li><a href="#"><img src="images/visalogo.webp" alt="Visa"></a></li>
-        <li><a href="#"><img src="images/mastercardlogo.svg" alt="Mastercard"></a></li>
-        <li><a href="#"><img src="images/visalogo.webp" alt="Visa"></a></li>
-        <li><a href="#"><img src="images/applepaylogo.png" alt="Apple Pay"></a></li>
-        <li><a href="#"><img src="images/thuiswinkellogo.png" alt="Thuiswinkel Waarborg"></a></li>
-        <li><a href="#"><img src="images/kisspng-logo-postnl-mail-netherlands-nexive-linijn-5bfa2e5e339a19.3857072615431225262114.jpg" alt="PostNL"></a></li>
-      </ul>
-    </section>
+			<!-- voordeelblok 1 -->
+			<a href="/energie/korting-witgoed">
+				<img src="images/bankfoto.jpeg" alt="Bankfoto">
+				<h3>Korting op energiezuinige producten</h3>
+				<p>Bespaar op je wasmachine of slimme stekkers en daarna op je energierekening.</p>
+			</a>
 
-    <section>
-      <ul>
-        <li><a href="/voorwaarden">Algemene voorwaarden</a></li>
-        <li><a href="/privacy">Privacy</a></li>
-        <li><a href="/cookies">Cookies</a></li>
-        <li><a href="/en">English</a></li>
-      </ul>
-    </section>
+			<!-- voordeelblok 2 -->
+			<a href="/energie/voordeel-2">
+				<img src="images/monteerfoto.jpeg" alt="monteerfoto">
+				<h3>Split airco's van Coolblue Energie</h3>
+				<p>Geniet van een koele temperatuur in huis met een split airco van Coolblue Energie.</p>
+			</a>
+		</section>
 
-    <section>
-      <p>1999–2025 Coolblue B.V.</p>
-    </section>
-  </footer>
+		<section>
+			<h2>Best verkocht</h2>
+			<ul>
+				<li>
+					<article>
+						<a href="/product/airpods-pro-2">
+							<img src="images/airpodspro.png" alt="Apple AirPods Pro 2">
+							<p>Tot 10 euro aan inruilwaarde</p>
+							<h3>Apple AirPods Pro 2</h3>
+							<p>305 reviews</p>
+							<p>€ 249,-</p>
+						</a>
+					</article>
+				</li>
+				<li>
+					<article>
+						<a href="#">
+							<img src="images/Kobolibracolourzwart.png" alt="Kobolibracolourzwart">
+							<p>Tot 10 euro aan inruilwaarde</p>
+							<h3>Kobra libra Colour</h3>
+							<p>80 reviews</p>
+							<p>€ 238,-</p>
+						</a>
+					</article>
+				</li>
+				<!-- meer li-items voor andere bestsellers -->
+			</ul>
+		</section>
 
-  <script defer src="scripts/script.js"></script>
+	</main>
+
+	<footer>
+		<nav>
+			<ul>
+				<li><a href="/assortiment">Ons assortiment</a></li>
+				<li><a href="/bedrijfswebsite">Bedrijfswebsite</a></li>
+				<li><a href="/klantenservice">Klantenservice</a></li>
+				<li><a href="/zakelijk">Zakelijk</a></li>
+				<li><a href="/winkels">Onze winkels</a></li>
+				<li><a href="/over">Over Coolblue</a></li>
+				<li><a href="/werken-bij">Werken bij Coolblue</a></li>
+				<li><a href="/inloggen">Inloggen</a></li>
+			</ul>
+		</nav>
+
+		<section>
+			<ul>
+				<li><a href="#"><img src="images/ideallogo.png" alt="iDEAL"></a></li>
+				<li><a href="#"><img src="images/visalogo.webp" alt="Visa"></a></li>
+				<li><a href="#"><img src="images/mastercardlogo.svg" alt="Mastercard"></a></li>
+				<li><a href="#"><img src="images/visalogo.webp" alt="Visa"></a></li>
+				<li><a href="#"><img src="images/applepaylogo.png" alt="Apple Pay"></a></li>
+				<li><a href="#"><img src="images/thuiswinkellogo.png" alt="Thuiswinkel Waarborg"></a></li>
+				<li><a href="#"><img
+							src="images/kisspng-logo-postnl-mail-netherlands-nexive-linijn-5bfa2e5e339a19.3857072615431225262114.jpg"
+							alt="PostNL"></a></li>
+			</ul>
+		</section>
+
+		<section>
+			<ul>
+				<li><a href="/voorwaarden">Algemene voorwaarden</a></li>
+				<li><a href="/privacy">Privacy</a></li>
+				<li><a href="/cookies">Cookies</a></li>
+				<li><a href="/en">English</a></li>
+			</ul>
+		</section>
+
+		<section>
+			<p>1999–2025 Coolblue B.V.</p>
+		</section>
+	</footer>
+
+	<script defer src="scripts/script.js"></script>
 </body>
+
 </html>
