@@ -1,6 +1,4 @@
-
-/* RESET      */
-
+/* --- RESET --- */
 html, body {
   margin: 0;
   padding: 0;
@@ -9,20 +7,52 @@ html, body {
   box-sizing: border-box;
 }
 
-/* custom properties,/ var kleuren*/
-
+/* --- Custom properties (donkere modus variabelen) --- */
 :root {
   --bg: #fff;
   --text: #111;
   --panel: #f6f7f9;
   --border: #e5e7eb;
-  --brand-blue: #1792E1;   /* helder Coolblue-blauw */
-  --brand-orange: #FF5E00; /* oranje accent */
+  --brand-blue: #1792E1;
+  --brand-orange: #FF5E00;
   --brand-darkblue: #3768b1;
+  --heading-font: Arial, sans-serif;
+  --text-orange: #FFE8D9;
+  --text-grey: #6b7280;
+  --text-darkgrey: #374151;
+  --lightbluebackground-color: #f0f9ff;  
+  --light-border: #cbd5e1;
+  --icon-kleuren: #00b900;
 }
 
-/* BASIS STYLING */
+body {
+  font-size: var(--base-font-size); /* blijft zoals jij zei */
+  font-family: Arial, sans-serif;
+  line-height: 1;
+}
 
+/* --- Sliderbalk onderaan --- */
+.font-slider-bar {
+  background: var(--panel);
+  border-top: .0625em solid var(--border); /* 1px */
+  padding: .8em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.font-slider-bar label {
+  font-size: .9em;
+  color: var(--text);
+}
+
+#fontSlider {
+  width: 12.5em; /* 200px */
+}
+
+/* --- Basis elementen --- */
 img { 
   max-width: 100%; 
   height: auto; 
@@ -34,113 +64,137 @@ ul {
   padding: 0; 
 }
 
-
-/*Blauwe balk strakker */
-header nav{
+/* --- Blauwe balk bovenaan --- */
+header nav {
   background: var(--brand-blue);
   display: grid;
-  grid-template-columns: auto 1fr auto; /* links | midden | rechts */
-  column-gap: .4rem;          
-  padding: 0 .65rem;          
+  grid-template-columns: auto 1fr auto;
+  column-gap: .4em;
+  padding: 0 .65em;          
   width: 100%;
   box-sizing: border-box;
+  height: 3em;
+  overflow: hidden;
 }
 
-/* hamburgerr */
-header nav > button{
+/* --- Hamburger menu panel --- */
+.menu-panel {
+  position: fixed;
+  inset: 0; /* vervangt top/left/right/bottom:0 */
+  background: var(--bg);
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  z-index: 9999;
+}
+.menu-panel.toonMenu {
+  transform: translateX(0);
+}
+
+.menu-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  font-size: 2rem; /* kan zo blijven → schaalbaar */
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* --- Hamburger icoon knop --- */
+header nav > button {
   justify-self: start;
   background: transparent;
   border: 0;
-  color: #fff;
-  font-size: 2.4rem;          /* formaat icoon */
-  padding: .15rem;            /* bijna geen padding → hoger ogen */
-  transform: translateY(-6px);/* nog net iets hoger */
+  color: var(--bg);
+  font-size: 2.4rem;
+  padding: .1em;
+  transform: translateY(-.55em); /* -9px */
 }
 
-/* logo */
-header nav > a{
-  margin-left: 6em;
-}
-header nav > a img{
-  width: 65px;                /* vaste maat logo */
+/* --- Logo --- */
+header nav > a img {
+  width: 4em;
   display: block;
-  margin-top: -11px;          /* duwt het logo omhoog zodat de bovenrand net uit beeld valt */
-  transform: translateY(-4px);/* nog iets hoger */
-  margin-bottom: -10px;
+  transform: translateY(-.6em); /* -10px */
+  margin-left: 6.5em;
 }
 
-/* iconen rechts */
-header nav > ul{
+
+
+
+
+/* --- Iconen rechts --- */
+header nav > ul {
   display: flex;
-  gap: .26rem;                /* kleinere gap tussen iconen */
-  transform: translateY(8px); /* visueel hoger */
+  gap: .26em;
+  transform: translateY(.5em); /* 8px */
 }
-header nav > ul a{
+
+header nav > ul a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;                /* kleiner klikvlak */
-  height: 28px;
-}
-header nav > ul img{
-  width: 26px;                /* iconen compacter */
-  height: 26px;
+  width: 1.75em;   /* 28px */
+  height: 1.75em;  /* 28px */
 }
 
+/* --- Winkelmand animatie --- */
+.winkelmand-icon.geklikt svg {
+  transition: transform .2s ease;
+  transform: rotate(360deg) scale(1.1);
+  fill: var(--brand-orange);
+}
+.winkelmand-icon svg {
+  transition: transform .9s ease, fill .6s ease;
+}
 
-/* visueel hidden stukje */
-
+/* --- Visually hidden --- */
 .visually-hidden {
   position: absolute;
-  width: 1px; 
+  width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
   overflow: hidden;
-  white-space: nowrap; 
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
 }
 
-
-/* de zoekbalk co ntainer
-/* (eerste section in header) */
-
+/* --- Zoekbalk container (eerste section in header) --- */
 header > section:first-of-type {
-  background: #f6f5f5;
-  padding: 0.3em 0.3em; 
+  background: var(--bg);
+  padding: .3em;
 }
 
-/* zoek formulier in die section */
+/* Zoek formulier */
 header > section:first-of-type form {
   display: flex;
-  gap: 0em;
 }
 
-/* zoekveld */
+/* Zoekveld */
 header > section:first-of-type input[type="search"] {
   flex: 1;
   height: 2.75em;
-  padding: 0 0.75em;
-  border: 0.01em solid var(--border);
+  padding: 0 .75em;
+  border: .01em solid var(--border);
   font-size: 1em;
-  border-radius: 0.3em 0 0 0.3em; 
+  border-radius: .3em 0 0 .3em;
 }
 
-/* zoekknop */
+/* Zoekknop */
 header > section:first-of-type button {
   height: 2.73em;
-  padding: 0 em;
-  border: 0.0625em solid var(--brand-blue);
-  border-radius: 0 0.75em 0.75em 0; 
+  border: .0625em solid var(--brand-blue);
+  border-radius: 0 .75em .75em 0; 
   background: var(--brand-blue);
-  color: #fff;
+  color: var(--bg);
   cursor: pointer;
   font-size: 1em;
 }
 
-
-/* usp balk  */
-
+/* --- USP balk (lopende tekst boven de carrousel) --- */
 .usp {
   position: relative;
   height: 2em;
@@ -148,14 +202,16 @@ header > section:first-of-type button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
   font-weight: 400;
-  margin-top: 1em;
-  margin-bottom: .65em;   /* ruimte ONDER de USP */
+  margin: 1em 0 .65em;
 }
-.usp strong { color: var(--brand-orange); font-weight: 700; }
-
+.usp strong {
+  color: var(--brand-orange);
+  font-weight: 700;
+}
 .usp li {
   position: absolute;
-  top: 0; right: -120%;   /* start rechts buiten beeld */
+  top: 0;
+  right: -120%;
   width: 100%;
   text-align: center;
   opacity: 0;
@@ -167,832 +223,892 @@ header > section:first-of-type button {
 
 @keyframes slide {
   0%   { right: -120%; opacity: 0; }
-  10%  { right: 0;     opacity: 1; }   /* schuift in */
-  30%  { right: 0;     opacity: 1; }   /* blijft even staan */
-  40%  { right: 120%;  opacity: 0; }   /* schuift uit */
+  10%  { right: 0;     opacity: 1; }
+  30%  { right: 0;     opacity: 1; }
+  40%  { right: 120%;  opacity: 0; }
   100% { right: 120%;  opacity: 0; }
 }
 
 
-/* Back to school carrousel */
 
 
-/* lijst met slides in de sections */
-body.homepagina main > section:nth-of-type(1) > ul {
+
+/* --- 1. Carrousel – Samsung + iPhone --- */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(1) {
   display: flex;
   gap: 1em;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  scrollbar-color: var(--brand-blue) transparent;
 }
 
-/* elke slide */
-body.homepagina main > section:nth-of-type(1) > ul > li {
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(1)::-webkit-scrollbar {
+  display: none; /* verberg scrollbar in Chrome/Safari/Edge */
+}
+
+/* Elke slide */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(1) > li {
   flex: 0 0 100%;
   scroll-snap-align: center;
 }
 
-/* Afbeeldingen zelfde hoogte */
-body.homepagina main > section:nth-of-type(1) > ul > li img {
+/* Afbeeldingen */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(1) > li img {
   margin-top: -1em;
   width: 100%;
   display: block;
-  border-radius: 0 0 .5em .5em; /* alleen onderranden rond */
 }
 
-/* Link onder de carrousel */
-body.homepagina main > section:nth-of-type(1) > a[href*="/deals"] {
-  display: inline-block;
-  margin: .5em 0 0;
-  text-decoration: none;
-  color: var(--brand-blue);
-  font-weight: 600;
+/* Indicator-balk onder carrousel */
+.carrousel-indicator {
+  display: flex;
+  justify-content: center;
+  gap: .5em;
+  margin-top: .5em;
+  list-style: none;
+  padding: 0;
+}
+
+/* Balkjes */
+.carrousel-indicator li {
+  flex: 0 0 11em; /* breedte balkje = afhankelijk van aantal slides */
+  height: .3em;
+  background: #ddd;
+  border-radius: .2em;
+  transition: background .3s;
+}
+
+/* Actief balkje */
+.carrousel-indicator li.active {
+  background: var(--brand-blue);
 }
 
 
-/* 2. CARROUSEL AEG/JBL/Oppo */
 
-body.homepagina main > section:nth-of-type(2) > ul {
-  display: flex;                 
-  overflow-x: auto;              
-  overflow-y: hidden;            
-  scroll-snap-type: x mandatory; 
-  scroll-behavior: smooth;       
+
+
+
+/* --- 2. Carrousel – AEG / JBL / Oppo --- */
+
+/* Hele lijst als carrousel */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   overscroll-behavior-x: contain;
-  gap: 1rem;
-  scrollbar-width: none;
-  scrollbar-color: var(--brand-blue) #ddd;
+  gap: 1em;
+  padding: 0 1em;
+  scrollbar-width: none; /* geen standaard scrollbar */
 }
 
-
-/* elke LI */
-body.homepagina main > section:nth-of-type(2) > ul > li {
-  flex-basis: 100%;
-  flex-shrink: 0;
+/* Elke slide */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li {
+  flex: 0 0 100%;
   scroll-snap-align: center;
+  box-sizing: border-box;
 }
 
-/* AEG artikel*/
-body.homepagina main > section:nth-of-type(2) > ul > li > article {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: .5em 1em;
+/* --- Artikelen --- */
+
+
+
+
+
+/* AEG (1e blok) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(1) > article {
+  position: relative;
   background: var(--panel);
-  border: 0.0625em solid var(--border);
-  min-height: 100px;
-  margin-top: 2em;
-  margin-left: 1em;
-  margin-right: 4.5em;
+  border: .0625em solid var(--border);
+  border-radius: .3em;
+  padding: .8em;
+  min-height: 7em;
+  box-sizing: border-box;
+  margin-top: 2.5em;
 }
 
-/* “Aanbieding/(eerste p) */
-body.homepagina main > section:nth-of-type(2) > ul > li > article > p:first-of-type {
-  font-size: 0.8em;
-  font-weight: 700;
-  color: var(--brand-orange);
-  background: #FFE8D9;              
-  padding: .15em 0.55em;
-  border-radius: 0.4em;
-  margin: 0 0 .35em 0;
-  margin-top: -5em;
+/* JBL (2e blok) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(2) > article {
+  position: relative;
+  background: var(--panel);
+  border: .0625em solid var(--border);
+  border-radius: .3em;
+  padding: 1em;
+  min-height: 7.9em;
+  box-sizing: border-box;
+  margin-top: 2.2em;
 }
 
-/* 2) merkregel:(tweede p)grijzig, */
-body.homepagina main > section:nth-of-type(2) > ul > li > article > p:nth-of-type(2) {
-  margin-top: -1em;
-  font-size: .85em;
-  color: #6b7280;
-  letter-spacing: .06em;
-  margin-left: -6em;
+/* Oppo (3e blok) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(3) > article {
+  position: relative;
+  background: var(--panel);
+  border: .0625em solid var(--border);
+  border-radius: .3em;
+  padding: .8em;
+  min-height: 5.3em;
+  box-sizing: border-box;
+  margin-top: 2.1em;
 }
 
-/* 3) H3 */
-body.homepagina main > section:nth-of-type(2) > ul > li > article h3 {
-  color: var(--brand-blue);
-  font-weight: 700;
-  font-size: 1.1em;
-  margin-left: -2em;
-  margin-top: 1.5em;
+/* Tekst onder elkaar */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li > article > :not(img) {
+  display: block;
+  margin: 0 0 .4em 0;
 }
 
-/* 4) extra tekstregels “Nu met korting”) */
-body.homepagina main > section:nth-of-type(2) > ul > li > article > p:nth-of-type(n+3) {
-  color: #374151;
-  font-size: .95em;
-  margin-bottom: -3em;
-  margin-left: -7em;
+/* --- Afbeeldingen --- */
 
-}
-
-/* productbeeld rechts */
-body.homepagina main > section:nth-of-type(2) > ul > li > article > img {
-  width: 70px;
+/* AEG + Oppo afbeelding rechts gecentreerd */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(1) > article > img,
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(3) > article > img {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4em;
   height: auto;
+  object-fit: contain;
 }
 
-/*jbl*/
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: .5em 1em;
-  background: var(--panel);
-  border: 0.0625em solid var(--border);
-  min-height: 100px;
-  margin-top: 2em;
-  margin-left: -4.8em;
-  margin-right: 4.5em;
+/* JBL afbeelding */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(2) > article > img {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.2em;
+  height: auto;
+  object-fit: contain;
 }
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:first-of-type {
-  font-size: 0.8em;
-  font-weight: 700;
-  color: var(--brand-orange);
-  background: #FFE8D9;
-  padding: .15em 0.55em;
-  border-radius: 0.4em;
-  margin: 0 0 .35em 0;
-  margin-top: -5em;
-  margin-left: -3.5em;
-}
+/* --- Tekststijlen --- */
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:nth-of-type(2) {
-  margin-top: -1em;
-  font-size: .85em;
-  color: #6b7280;
-  letter-spacing: .06em;
-  margin-left: -3.5em;
-  
-}
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article h3 {
-  color: var(--brand-blue);
-  font-size: 1.1em;
-  margin-left: -1em;
-  margin-top: 1.5em;
-
-
-}
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > p:nth-of-type(n+3) {
-  color: #374151;
-  font-size: .95em;
-  margin-bottom: -3em;
-  margin-left: -7em;
-}
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(2) > article > img {
-  width: 70px;
-  
-}
-
-
-/* 3. Oppo   */
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: .5em 1em;
-  background: var(--panel);
-  border: 0.0625em solid var(--border);
-  min-height: 100px;
-  margin-top: 2em;
-  margin-left: 1em;
-  margin-right: 2em;
-}
-
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:first-of-type {
+/* Label (1e p) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li > article > p:first-of-type {
   font-size: .8em;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--brand-orange);
-  background: #FFE8D9;
-  padding: .15em .55em;
+  background: var(--text-orange);
+  padding: .2em .6em;
   border-radius: .4em;
-  margin: 0 0 .35em 0;
-  margin-top: -5em;
+  margin-bottom: .5em;
+  display: inline-block;
 }
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:nth-of-type(2) {
-  margin-top: -1em;
+/* Merknaam AEG */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(1) > article > p:nth-of-type(2) {
   font-size: .85em;
-  color: #6b7280;
-  text-transform: uppercase;
+  color: var(--text-grey);
   letter-spacing: .06em;
-  margin-left: -6em;
 }
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article h3 {
-  color: var(--brand-blue);
-  font-weight: 700;
+/* Merknaam Oppo (2e p) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li:nth-of-type(3) > article > p:nth-of-type(2) {
+  font-size: .85em;
+  color: var(--text-grey);
+  letter-spacing: .06em;
+  margin-bottom: 2em;
+}
+
+/* Titel (h3) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li > article > h3 {
   font-size: 1.1em;
-  margin-left: -2em;
-  margin-top: 1.5em;
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin: .5em 0;
 }
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > p:nth-of-type(n+3) {
-  color: #374151;
+/* Extra tekst (na h3) */
+body.homepagina main > section:nth-of-type(1) > ul:nth-of-type(3) > li > article > p:nth-of-type(n+3) {
   font-size: .95em;
-  margin-bottom: -3em;
-  margin-left: -7em;
+  color: var(--text-darkgrey);
 }
 
-body.homepagina main > section:nth-of-type(2) > ul > li:nth-of-type(3) > article > img {
-  width: 70px;
-  height: auto;
-}
-
-
-
-/* CATEGORIEËN BLOKKEN    */
-body.homepagina main > section:nth-of-type(3) > h2 {
-  margin: 1em;               
-  font-size: 1.05em;         
-  font-weight: 650;          
-  color: var(--text);       
+/* --- Link onder carrousel --- */
+body.homepagina main > section:last-of-type ul li a {
+  color: var(--brand-blue);
+  text-decoration: none;
+  font-size: .9em;
+  font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 2em;
+  margin: 1em;
+  display: inline-block;
 }
 
 
-/* de lijst met categorie-blokken */
-body.homepagina main > section:nth-of-type(3) > ul {
-  display: flex;             
-  flex-wrap: wrap;            /* als er geen ruimte is, gaan blokken naar de volgende regel */
-  gap: 1em;                   
-  margin: 1em;                
-  list-style: none;          
-  padding: 0;                 
-}
 
-/* elk categorie-blok */
-body.homepagina main > section:nth-of-type(3) > ul > li {
-  flex: 1 1 calc(50% - 1em);  /* 2 blokken naast elkaar, elk ~50% breed */
-  background: var(--panel);   
-  border: 0.02em solid #cbd5e1;  
-  border-radius: .2em;        
-  padding: 1em;               
-  text-align: center;        
-}
 
-/* de afbeelding in elk blok */
-body.homepagina main > section:nth-of-type(3) > ul > li img {
-  width: 200px;                
-  margin: 0 auto .9em auto;   
-  border-radius: 1em;
-}
 
-/* de titel (h3) van elk blok */
-body.homepagina main > section:nth-of-type(3) > ul > li h3 {
-  margin: 0.25em 0 0 0;        /* ruimte boven de titel */
-  color: var(--brand-darkblue);   
-  font-size: 0.85em;             
+
+/* --- Categorieën blokken --- */
+body.homepagina main > section:nth-of-type(2) > h2 {
+  margin: 2em 1em 1em;          /* boven extra ruimte */
+  font-size: 1.05em;
+  font-weight: 650;
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body.homepagina main > section:nth-of-type(3) > ul > li a {
-  text-decoration: none;      
+/* lijst met blokken */
+body.homepagina main > section:nth-of-type(2) > ul {
+  display: flex;
+  flex-wrap: wrap;              /* blokken breken naar nieuwe regel */
+  gap: 1em;
+  margin: 1em;
+  padding: 0;
 }
 
-/* hover-effect voor het hele blok */
-body.homepagina main > section:nth-of-type(3) > ul > li:hover {
-  background: #f0f9ff;       
-  border-color: var(--brand-blue);
+/* elk blok */
+body.homepagina main > section:nth-of-type(2) > ul > li {
+  flex: 1 1 calc(50% - 1em);  
+  background: var(--panel);
+  border: .02em solid var(--light-border);
+  border-radius: .2em;
+  padding: 1em;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-/* “Bekijk het volledige assortiment”link */
-body.homepagina main > section:nth-of-type(3) > ul > a {
-  flex: 1 1 100%;             /* pakt de volledige breedte */
-  text-align: center;         
-  margin-top: -0.3em;           
-  color: var(--brand-blue);   
-  font-weight: 500;           
-  text-decoration: none;      
-  font-family: Helvetica, sans-serif;
-  margin-left: -11.6em;
+/* afbeelding in blok */
+body.homepagina main > section:nth-of-type(2) > ul > li img {
+  display: block;
+  margin: 0 auto .9em;
+  width: 100%;
+}
+
+/* titel (h3) in blok */
+body.homepagina main > section:nth-of-type(2) > ul > li h3 {
+  margin: .25em 0 0;
+  color: var(--brand-darkblue);
+  font-size: .85em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body.homepagina main > section:nth-of-type(2) > ul > li a {
+  text-decoration: none;
+}
+
+/* link onder categorieën */
+body.homepagina main > section:nth-of-type(2) > a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  margin-left: 1.3em;
+  color: var(--brand-blue);
+  font-weight: 500;
   font-size: small;
+  text-decoration: none;
+  font-family: Helvetica, sans-serif;
+}
+
+body.homepagina main > section:nth-of-type(2) > a svg {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
 }
 
 
-body.homepagina main > section:nth-of-type(4) > h2 {
-  margin: 1em;                          
-  margin-top: 2em;                      
-  font-size: 1.05em;                    
-  font-weight: 650;                    
-  color: var(--text);               
+
+
+
+
+
+
+
+
+/* --- Merken-carrousel --- */
+body.homepagina main > section:nth-of-type(3) > h2 {
+  margin: 1em;
+  font-size: 1.05em;
+  font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
 }
 
-
-
-/* MERKEN-CARROUSEL*/
-
-
-body.homepagina main > section:nth-of-type(4) > ul {
+/* de lijst zelf */
+body.homepagina main > section:nth-of-type(3) > ul {
   display: flex;                 
   overflow-x: auto;              
-  overflow-y: hidden;            
   scroll-snap-type: x mandatory; 
   scroll-behavior: smooth;       
   overscroll-behavior-x: contain;
-  gap: 1rem;                     
-  scrollbar-width: none;         
+  gap: 1em;                     
   padding-left: 1em;            
+  scrollbar-width: none;         
 }
 
-/* elk LI  */
-body.homepagina main > section:nth-of-type(4) > ul > li {
-  flex: 0 0 80%;     /* hoeveel ruimte er van de boxes naast elkaar zitten*/            
+/* elk merk-blok */
+body.homepagina main > section:nth-of-type(3) > ul > li {
+  flex: 0 0 80%;            
   scroll-snap-align: center;     
   background: var(--panel);      
-  border: 0.02em solid #cbd5e1;  
+  border: .02em solid var(--light-border);  
   border-radius: .2em;           
-  padding: 0.4em;                  
-  min-height: 400px;             
+  padding: .4em;                  
+  min-height: 25em;             
   box-sizing: border-box; 
-  
 }
 
-/* afbeelding in het blok */
-body.homepagina main > section:nth-of-type(4) > ul > li img {
-  width: 300px;                  
+/* afbeelding */
+body.homepagina main > section:nth-of-type(3) > ul > li img {
+  width: 100%;                  
   margin-bottom: .8em;           
-  background: #f0f9ff;           
+  background: var(--lightbluebackground-color);           
   padding: .3em;                
 }
 
-/* titel van het blok */
-body.homepagina main > section:nth-of-type(4) > ul > li h3 {
+/* titel */
+body.homepagina main > section:nth-of-type(3) > ul > li h3 {
   color: var(--brand-darkblue);  
   font-weight: 650;              
-  font-size: 0.9em;              
+  font-size: .9em;              
   margin: .5em 0;                
   font-family: Arial, Helvetica, sans-serif;
   padding-left: .4em;
-  text-decoration: none;
-  
 }
 
-/* gewone tekst onder de titel */
-body.homepagina main > section:nth-of-type(4) > ul > li p {
-  color: var(--text);            
-  font-size: .85em;              
-  margin-bottom: .6em;           
+/* gewone tekst */
+body.homepagina main > section:nth-of-type(3) > ul > li p {
+  color: var(--text-darkgrey);            
+  font-size: .9em;              
+  margin-bottom: .9em;           
   font-family: Arial, Helvetica, sans-serif;
   padding-left: .4em;
 }
 
 /* deeplink-lijst onderin */
-body.homepagina main > section:nth-of-type(4) > ul > li ul {
-  list-style: none;              
+body.homepagina main > section:nth-of-type(3) > ul > li ul {
   padding: 0;
   margin: 0;
 }
-body.homepagina main > section:nth-of-type(4) > ul > li ul li a {
-  text-decoration: none;         
-  color: var(--brand-blue);      
-  font-size: 1.0 em;               
-  display: block;                /* elke link op eigen regel */
-  margin-bottom: .25em;          
-
+body.homepagina main > section:nth-of-type(3) > ul > li ul li a {
+  text-decoration: none;              
+  font-size: .9em;               
+  display: block;                
+  margin-bottom: .65em;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-weight: lighter;
+  color: var(--brand-blue); 
 }
 
-body.homepagina main > section:nth-of-type(4) > ul > li > a {
+/* link naar merkpagina */
+body.homepagina main > section:nth-of-type(3) > ul > li > a {
   text-decoration: none;                        
 }
-body.homepagina main > section:nth-of-type(4) > a {
-  display: block;            
-  margin: .5em 1em 0;           
-  color: var(--brand-blue);     
-  text-decoration: none;        
-  font-weight: 600;             
+
+/* “Bekijk alle merken” link */
+body.homepagina main > section:nth-of-type(3) > a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  margin: 1.5em 1em 0;
+  color: var(--brand-blue);
+  font-weight: 500;
+  font-size: small;
+  text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
+}
+body.homepagina main > section:nth-of-type(3) > a svg {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
 }
 
 
-body.homepagina main > section:nth-of-type(5) > h2 {
-  margin: 1em;                         
-  margin-top: 2.8em;                      
-  font-size: 1.1em;                     
-  font-weight: 650;                     
-  color: var(--text);                   
+
+
+
+
+
+
+/* =============================== */
+/* SECTION 4 – Reviews / Productkaarten */
+/* =============================== */
+
+/* titel */
+body.homepagina main > section:nth-of-type(4) > h2 {
+  margin: 1em;
+  margin-top: 2.8em;
+  font-size: 1.1em;
+  font-weight: 650;
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* zorgt dat de titel-link geen underline/blauwe kleur heeft */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li > article > a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ondertitel / korte uitleg */
-body.homepagina main > section:nth-of-type(5) > p {
-  margin: 0 1em 1em 1em;                
-  font-size: 0.9em;                     
-  color: #374151;                       
+body.homepagina main > section:nth-of-type(4) > p {
+  margin: 0 1em 1em 1.3em;
+  font-size: .9em;
+  color: var(--text-darkgrey);
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: -0.3em;
-  margin-left: 1.3em;
+  margin-top: -.3em;
 }
 
-/* prijs + beschrijving binnen de kaarten */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > p {
-  font-size: 0.85em;                   
-  color: #374151;                       
-  margin: 0.2em 0;                      
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/* Alleen de EERSTE ul in deze sectie is de carrousel */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1){
-  display:flex;                 
-  overflow-x:auto;              
-  overflow-y:hidden;            /* geen verticale scrollbar */
-  scroll-snap-type:x mandatory; 
-  scroll-behavior:smooth;       
-  overscroll-behavior-x:contain;
-  gap:1rem;                     
-  padding-left: 1.0em;            
-  scrollbar-width:none;         /* scrollbar verbergen */
+/* === Eerste UL (carrousel) === */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  gap: 1rem;
+  padding-left: 1em;
+  scrollbar-width: none;
   margin-top: -9em;
 }
 
-
-/* Elke kaart/slide binnen die UL */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li{
-  flex:0 0 80%;                 
-  scroll-snap-align:center;    
+/* Elke slide */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li {
+  flex: 0 0 70%;
+  scroll-snap-align: center;
 }
 
-/* De kaart zelf (article) */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(1) > article {
-  background: var(--panel);
-  border: 0.02em solid #cbd5e1;  /* dunne rand */
+/* Algemene stijl voor de kaarten */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li > article {
+  background: var(--bg);
+  border: .02em solid var(--light-border);
   border-radius: .2em;
   padding: 1em;
+  min-height: 13em; /* basis hoogte – ReMarkable klopt zo */
   box-sizing: border-box;
-  min-height: 210px;
 }
 
-/* 2e kaart */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(2) > article {
-  background: var(--panel);
-  border: 0.02em solid #cbd5e1;
+/* ====== Kaart 1: ReMarkable ====== */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > article > img {
+  width: 9.5em;
+  display: block;
+  margin: 0 auto .6em;
   border-radius: .2em;
-  padding: 2.45em;
-  box-sizing: border-box;
-  min-height: 210px;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > article > a > h3 {
+  font-size: .9em;
+  font-weight: 650;
+  color: var(--brand-blue);
+  margin: .3em 0;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > article > p:nth-of-type(1) {
+  font-size: .8em;
+  color: var(--text-darkgrey);
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > article > p:nth-of-type(2) {
+  font-size: .9em;
+  font-weight: 600;
+  color: var(--text);
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(1) > article > p:nth-of-type(3) {
+  font-size: .8em;
+  color: var(--text-darkgrey);
+  margin-top: 2.4em;
 }
 
-/* 3e kaart */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li:nth-of-type(3) > article {
-  background: var(--panel);
-  border: 0.02em solid #cbd5e1;
+/* ====== Kaart 2: Inventum ====== */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > article > img {
+  width: 9.5em;
+  display: block;
+  margin: 0 auto .6em;
   border-radius: .2em;
-  padding: 1em;
-  box-sizing: border-box;
-  min-height: 150px;
 }
-
-/* Afbeelding in de kaart */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > img{
-  width:150px;
-  height:auto;
-  display:block;
-  margin-bottom:.6em;
-  border-radius:.2em;
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > article > a > h3 {
+  font-size: .9em;
+  font-weight: 650;
+  color: var(--brand-blue);
+  margin-top: 4em; /* custom marge voor uitlijning */
 }
-
-/* Titel-link */
-body.homepagina main > section:nth-of-type(5) > ul:nth-of-type(1) > li > article > a{
-  text-decoration:none;
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > article > p:nth-of-type(1) {
+  font-size: .8em;
   color: var(--brand-blue);
 }
-
-/* 2) 2img UL */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(1) > ul{
-  display:flex; 
-  overflow-x:auto; 
-  overflow-y:hidden;
-  scroll-snap-type:x mandatory; 
-  scroll-behavior:smooth;
-  overscroll-behavior-x:contain; 
-  gap:1rem; 
-  padding-left:.5em;
-  scrollbar-width:none;
-  margin-top: 2em;
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > article > p:nth-of-type(2) {
+  font-size: .9em;
+  font-weight: 600;
+  color: var(--text);
+  padding-bottom: .9em;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(2) > article > p:nth-of-type(3) {
+  font-size: .8em;
+  color: var(--text-darkgrey);
+  margin-top: .4em;
 }
 
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li{
-  flex:0 0 90%;
-  scroll-snap-align:center;
-  background:var(--panel);
-   border:0.02em solid #cbd5e1; 
-   border-radius:.2em; 
+/* ====== Kaart 3: Rayzor ====== */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > article > img {
+  width: 7.33em; /* afwijkend formaat voor juiste uitlijning */
+  display: block;
+  margin: 0 auto .6em;
+  border-radius: .2em;
 }
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li img{
-  width:100%; 
-  display:block; 
-  border-radius:.2em;
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > article > a > h3 {
+  font-size: .9em;
+  font-weight: 650;
+  color: var(--brand-blue);
+  margin: .3em 0;
 }
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(1) > ul > li:last-of-type{
-  margin-right: .6em; 
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > article > p:nth-of-type(1) {
+  font-size: .8em;
+  color: var(--brand-blue);
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > article > p:nth-of-type(2) {
+  font-size: .9em;
+  font-weight: 600;
+  color: var(--text);
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li:nth-of-type(3) > article > p:nth-of-type(3) {
+  font-size: .8em;
+  color: var(--text-darkgrey);
+  margin-top: .4em;
+}
+
+/* Reviews (eerste p in de kaarten) */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li > article > p:nth-of-type(1) {
+  display: flex;  
+  align-items: center; 
+  gap: .25em; 
+  font-size: .8em;
+  color: var(--text-darkgrey);
+  flex-wrap: wrap;
+}
+
+/* De SVG’s (sterretjes) binnen reviews */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(1) > li > article > p:nth-of-type(1) svg {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  fill: var(--icon-kleuren);
+}
+
+/* === Tweede UL (2 losse afbeeldingen) === */
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(2) {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  gap: 1rem;
+  padding-left: 1.15em;
+  scrollbar-width: none;
+  margin-top: 1.5em;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(2) > li {
+  flex: 0 0 90%;
+  scroll-snap-align: center;
+  background: var(--panel);
+  border: .02em solid var(--light-border);
+  border-radius: .2em;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(2) > li img {
+  width: 100%;
+  display: block;
+  border-radius: .2em;
+}
+body.homepagina main > section:nth-of-type(4) > ul:nth-of-type(2) > li:last-of-type {
+  margin-right: .6em;
 }
 
 
 
-/* titel */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > h2{
-  margin:1em;
-  margin-top:2em;
-  font-size:1.05em;
-  font-weight:650;
-  font-family:Arial, Helvetica, sans-serif;
+
+/* =============================== */
+/* SECTION 5 – Voordeelblokken     */
+/* =============================== */
+
+/* promotie-afbeelding direct onder de titel */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(1) > img {
+  width: calc(100% - 2em);
+  margin: 0 1em 1em;
+  border-radius: .5em;
+  display: block;
 }
 
-/* bovenste img/a) */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(1) > img{
-  display:block;
-  width:calc(100% - 2em);
-  margin:0 1em 1em;
-  border-radius:.3em;
+/* titel boven de voordeelblokken */
+body.homepagina main > section:nth-of-type(5) > h2 {
+  margin: 1.1em;
+  margin-top: 2.6em;
+  font-size: 1.05em;
+  font-weight: 650;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
 }
 
-/* voordeelblok 1 en voordeelblok 2  */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2),
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3){
+/* voordeelblok 1 en voordeelblok 2 */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(2),
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(3) {
   display: grid;
-  grid-template-columns: 110px 1fr;   /* links = img, rechts = tekst */
-  grid-template-rows: auto auto;      /* rij 1 = h3, rij 2 = p */
-  column-gap: 0.75em;
+  grid-template-columns: 7em 1fr;  /* links = img, rechts = tekst */
+  grid-template-rows: auto auto;   /* rij 1 = h3, rij 2 = p */
+  column-gap: .75em;
   text-decoration: none;
   color: var(--brand-darkblue);
   margin: 0 1em;
   padding: 1em 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: .06em solid var(--light-border);
 }
 
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > img,
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > img{
-  grid-row: 1 / 3;        /* loopt over beide rijen */
-  grid-column: 1;         /* staat links */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(3) {
+  border-bottom: none; /* alleen de laatste geen border */
 }
 
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > h3,
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > h3{
-  grid-row: 1;            /* eerste rij, rechts */
+/* afbeelding */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(2) > img,
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(3) > img {
+  grid-row: 1 / 3; /* loopt over beide rijen */
+  grid-column: 1;
+}
+
+/* titel (h3) */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(2) > h3,
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(3) > h3 {
+  grid-row: 1;
   grid-column: 2;
   margin: 0 0 .25em 0;
-  color: rgb(var(--brand-darkblue));
+  color: var(--brand-darkblue);
   font-weight: 650;
-  font-size: .95em;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(2) > p,
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(2) > a:nth-of-type(3) > p{
-  grid-row: 2;            /* tweede rij, rechts */
-  grid-column: 2;
-  margin: 0;
-  color: var(--text);
   font-size: .9em;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
-/* BEST VERKOCHT (genest) */
-
-
-/* titel: zwart */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > h2{
-  margin:1em;
-  font-size:1.05em;
-  font-weight:650;
-  color:#000;
-  font-family:Arial, Helvetica, sans-serif;
+/* beschrijving (p) */
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(2) > p,
+body.homepagina main > section:nth-of-type(5) > a:nth-of-type(3) > p {
+  grid-row: 2;
+  grid-column: 2;
+  margin: 0;
+  color: var(--text-darkgrey);
+  font-size: .8em;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* lijst als onzichtbare carrousel */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul{
-  display:flex;
-  overflow-x:auto;
-  overflow-y:hidden;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  gap:1rem;
-  padding:0 1em;              /* witruimte links én rechts zodat laatste niet plakt */
-  scrollbar-width:none;
+
+
+/* =============================== */
+/* SECTION 6 – Productkaarten      */
+/* =============================== */
+
+/* titel */
+body.homepagina main > section:nth-of-type(6) > h2 {
+  margin: 1em;
+  font-size: 1.05em;
+  font-weight: 650;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
 }
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul::-webkit-scrollbar{display:none}
+
+/* lijst als horizontale carrousel */
+body.homepagina main > section:nth-of-type(6) > ul {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 0 1em;
+  scrollbar-width: none; /* verbergt standaard scrollbar */
+}
 
 /* slides */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li{
-  flex:0 0 90%;               
-  scroll-snap-align:center;
+body.homepagina main > section:nth-of-type(6) > ul > li {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
 }
 
 /* kaart */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article{
-  padding:1em;
-  border-bottom:1px solid rgba(0,0,0,.15); /* lichte zwarte streep onder elk blok */
-  box-sizing:border-box;
+body.homepagina main > section:nth-of-type(6) > ul > li > article {
+  padding: 1em;
+  border-bottom: .06em solid rgba(0,0,0,.15);
+  box-sizing: border-box;
 }
 
 /* hele kaart klikbaar, geen underline */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a{
-  display:block;
-  text-decoration:none;
-  color:inherit;
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* afbeelding */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > img{
-  width:140px;
-  height:auto;
-  display:block;
-  margin-bottom:.5em;
-  border-radius:.2em;
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > img {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin-bottom: .5em;
+  border-radius: .2em;
 }
 
-/* beschrijving/inruiltekst (1e p)oranje  */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(1){
-  font-size:.85em;
-  font-weight:600;
+/* beschrijving/inruiltekst (1e p) oranje */
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(1) {
+  font-size: .85em;
+  font-weight: 600;
   color: var(--brand-orange);
-  background:#FFE8D9;
-  display:inline-block;      /* zodat het een badge/vlakje wordt */
-  padding:.15em .55em;
-  border-radius:.4em;
-  margin:.25em 0 .6em 0;
+  background: var(--text-orange);
+  display: inline-block;
+  padding: .15em .55em;
+  border-radius: .4em;
+  margin: .25em 0 .6em;
 }
 
 /* producttitel (h3) – Coolblue-blauw */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > h3{
-  color: var(--brand-darkblue);
-  font-weight:650;
-  font-size:.95em;
-  font-family:Arial, Helvetica, sans-serif;
-  margin:.4em 0 .6em 0;
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > h3 {
+  color: var(--brand-blue);
+  font-weight: 650;
+  font-size: .95em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: .4em 0 .6em 0;
 }
 
-/* reviews (2e p)  */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(2){
+/* reviews (2e p) */
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(2) {
+  display: flex;              /* sterren en tekst naast elkaar */
+  align-items: center;
+  gap: .2em;
   color: var(--brand-blue);
-  font-size:.9em;
-  margin:0 0 .8em 0;
+  font-size: .9em;
+  margin: 0 0 .8em 0;
+}
+
+/* SVG's in de review-paragraaf (2e p in de kaart) */
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(2) svg {
+  width: 1.3em;
+  height: 1em;
+  vertical-align: middle;
+  margin-right: .2em;
+  flex-shrink: 0;
+  fill: var(--icon-kleuren);
 }
 
 /* prijs (3e p) */
-body.homepagina main > section:nth-of-type(5) > section:nth-of-type(3) > ul > li > article > a > p:nth-of-type(3){
-  margin-top:1em;
-  color:#000;
-  font-weight:700;
-  font-size:1em;
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(3) {
+  margin-top: 1em;
+  color: #000;
+  font-weight: 700;
+  font-size: 1em;
 }
 
-/* nav-blokken */
+/* SVG's in de review-paragraaf (2e p in de kaart) */
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(2) svg {
+  width: 1.3em;               
+  height: 1em;
+  vertical-align: middle;   /* uitlijnen met tekst */
+  margin-right: .2em;       
+  fill: var(--icon-kleuren);
+}
+
+/* De tekst zelf na de sterren */
+body.homepagina main > section:nth-of-type(6) > ul > li > article > a > p:nth-of-type(2) {
+  color: var(--brand-blue);
+  font-size: .9em;
+  margin: 0 0 .8em 0;
+  display: flex;            /* zorgt dat SVG's en tekst netjes uitlijnen */
+  align-items: center;
+  gap: .2em;
+}
+
+
+
+
+
+/*-------------------------------------------*/
+/* FOOTER: NAV BLOKKEN */
+/*-------------------------------------------*/
 footer > nav > ul > li {
-  background: var(--brand-blue);              /* blauwe achtergrond */
-  color: #fff;                                /* witte tekst */
-  font-weight: 500;                           /* lichter gewicht */
-  border-bottom: 1px solid rgba(255,255,255,.25); /* lichte witte scheidslijn */
-  position: relative;
-  padding: .75em 1em;
-}
-
-/* linkjes in die blokken */
-footer > nav > ul > li > a {
-  color: #fff;                                /* wit */
-  text-decoration: none;
-  display: block;
-}
-
-/* pijltje rechts */
-footer > nav > ul > li::after {
-  content: "›";                               /* pijltje */
-  position: absolute;
-  right: 1em;
-  color: #fff;                                /* wit */
-}
-
-/* betaalmethoden sectie – ongewijzigd behalve lijn onder */
-footer > section:nth-of-type(1) > ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-  padding: 1em 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* onderliggende links (voorwaarden / privacy / etc.) */
-footer > section:nth-of-type(2) > ul > li > a {
-  color: var(--brand-blue);                   /* blauw */
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/************************/
-/* FOOTER: NAV BLOKKEN  *//************************/
-/************************/
-footer > nav > ul > li {
-  background: var(--brand-blue);                  /* blauwe achtergrond */
-  color: #fff;                                    /* witte tekst */
-  border-bottom: .8px solid rgba(255,255,255,.25); /* lichte witte lijn */
+  background: var(--brand-blue);                 
+  color: var(--bg);                                /* wit via var() */
+  border-bottom: .05em solid rgba(255,255,255,.25); /* subtiele scheidingslijn */
   position: relative;
   padding: .85em 1em;
- 
 }
 
-/* links in de blokken */
 footer > nav > ul > li > a {
-  color: #fff;            /* wit */
+  color: var(--bg);           /* wit via var() */
   text-decoration: none;
   display: block;
   font-family: Helvetica, sans-serif;
-  font-weight: 380;
+  font-weight: 400;           /* geldig gewicht */
   font-size: .85em;
-  
 }
 
 /* pijltje rechts */
 footer > nav > ul > li::after {
-  content: "›";           /* pijltje */
+  content: "›";
   position: absolute;
   right: 1em;
-  color: #fff;            /* wit */
-  margin-top: -1em;
-  
+  color: var(--bg);           /* pijltje ook wit */
+  top: 50%;                 
+  transform: translateY(-50%); /* perfect verticaal gecentreerd */
 }
 
 
-/************************/
+/*-------------------------------------------*/
 /* FOOTER: BETAALMETHODES */
-/************************/
-footer > section:nth-of-type(1) > ul {
+/*-------------------------------------------*/
+footer > ul:nth-of-type(1) {
   display: flex;
-  flex-wrap: wrap;            /* 2 rijen */
+  flex-wrap: wrap;
   gap: 1.5em;
   justify-content: center;
   padding: 1.2em 0;
-  border-bottom: 0.05em solid #e5e7eb;
+  border-bottom: .05em solid #e5e7eb; /* dunne grijze lijn */
   list-style: none;
   margin: 0;
 }
 
-/* alle logo's (img en svg) */
-
 /* iDEAL */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(1) img {
+footer > ul:nth-of-type(1) > li:nth-of-type(1) img {
   height: 2em;
 }
 
 /* Mastercard */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(2) img {
+footer > ul:nth-of-type(1) > li:nth-of-type(2) img {
   height: 2em;
-  
-
 }
 
 /* VISA (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(3) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(3) svg {
   height: 2em;
   width: 80%;
 }
 
 /* PayPal (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(4) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(4) svg {
   height: 2em;
   width: 85%;
-  margin-left: -.2em;
+  margin-left: -.2em; /* visueel centreren */
 }
 
 /* Logo 5 (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(5) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(5) svg {
   height: 2em;
   width: 100%;
-  
 }
 
 /* Logo 6 (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(6) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(6) svg {
   height: 2em;
-  margin-left: -2em;
+  margin-left: -2em; /* schuift iets naar links */
 }
 
 /* PostNL (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(7) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(7) svg {
   height: 2em;
 }
 
 /* Logo 8 (svg) */
-footer > section:nth-of-type(1) > ul > li:nth-of-type(8) svg {
+footer > ul:nth-of-type(1) > li:nth-of-type(8) svg {
   height: 2em;
 }
 
 /* Beste webwinkel 2022 */
-footer > section:nth-of-type(1) > ul > li strong {
+footer > ul:nth-of-type(1) > li strong {
   font-size: .95em;
   font-weight: 650;
   color: var(--brand-orange);
@@ -1002,27 +1118,10 @@ footer > section:nth-of-type(1) > ul > li strong {
 }
 
 
-
-
-
-
-
-/* Beste webwinkel 2022 */
-footer > section:nth-of-type(1) > ul > li strong {
-  font-size: .95em;
-  font-weight: 650;
-  color: var(--brand-orange);
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  align-items: center;
-}
-
-
-
-/************************/
+/*-------------------------------------------*/
 /* FOOTER: LINKS (voorwaarden, privacy, etc.) */
-/************************/
-footer > section:nth-of-type(2) > ul {
+/*-------------------------------------------*/
+footer > ul:nth-of-type(2) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1032,225 +1131,221 @@ footer > section:nth-of-type(2) > ul {
   margin: 0;
 }
 
-footer > section:nth-of-type(2) > ul > li {
+footer > ul:nth-of-type(2) > li {
   position: relative;
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: .9em;
 }
 
-footer > section:nth-of-type(2) > ul > li > a {
+footer > ul:nth-of-type(2) > li > a {
   color: var(--brand-blue);
   text-decoration: none;
   font-weight: 400;
   padding: 0 .6em;
 }
 
-/* verticale scheiding tussen links */
-footer > section:nth-of-type(2) > ul > li:not(:last-child)::after {
+/* scheidingslijn tussen links */
+footer > ul:nth-of-type(2) > li:not(:last-child)::after {
   content: "";
   position: absolute;
   right: 0;
   top: 15%;
-  height: 70%;             /* niet te hoog */
-  width: 1px;
-  background-color: #d1d5db; /* lichtgrijs */
- 
+  height: 70%;
+  width: .05em;
+  background-color: #d1d5db;
 }
 
 
-/************************/
-/* FOOTER: COPYRIGHT */  /************************/
-/************************/
-footer > section:nth-of-type(3) {
+/*-------------------------------------------*/
+/* FOOTER: COPYRIGHT */
+/*-------------------------------------------*/
+footer > p {
   text-align: center;
   padding: 1em 0;
-  color: #494949;               /* neutraal grijs */
-  font-size: 0.83em;
-  margin-top: -2em;
-  font-family:Arial, Helvetica, sans-serif
+  color: #494949;
+  font-size: .83em;
+  margin-top: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
 
 
 
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 1 – Titel, hero, 2 tegels */
+/*-------------------------------------------*/
 
-/************************//************************/
-/* MOBIELE PAGINA *//************************/
-/************************//************************/
-
-/* MOBIEL: SECTIE 1  */
-/* h1 + hero + 2 tegels*/
-body.mobiel main > section:nth-of-type(1) > h1{
-  margin-left: 1em;
-  font-size:1.15em;
-  font-weight:700;
-  font-family:Arial, Helvetica, sans-serif;
+body.mobiel main > section:nth-of-type(1) > h1 {
+  margin: 0 0 .5em 1em;
+  font-size: 1.15em;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--brand-darkblue);
 }
 
-/* eerste img samsung flip) */
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(1) > img:first-of-type{
-  width:calc(100% - 2em); /*dit zorgt ervoor dat de foto word uitgelijnd in het midden*/
-  margin:0 1em 1em;
-  border-radius:.5em;
-  display:block;
+/* grote hero afbeelding */
+body.mobiel main > section:nth-of-type(1) > img {
+  width: calc(100% - 2em);
+  margin: 0 1em 1em;
+  border-radius: .5em;
+  display: block;
 }
 
-/* de 2 info tegels: article 2 en 3 als grid */
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(2),
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(3){
-  display:grid;
-  grid-template-columns:110px 1fr;  
-  grid-template-rows:auto auto;
-  column-gap:.75em;
-  align-items:start;
-  margin:0 1em;
-  padding:1em 0;
-  border-bottom:1px solid #e5e7eb;
+/* de 2 info-tegels */
+body.mobiel main > section:nth-of-type(1) > article {
+  display: grid;
+  grid-template-columns: 110px 1fr; /* bewust px behouden */
+  grid-template-rows: auto auto;
+  column-gap: .75em;
+  align-items: start;
+  margin: 0 1em;
+  padding: 1em 0;
+  border-bottom: .08em solid var(--border);
 }
 
-/* beeld links in die tegels */
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(2) > img,
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(3) > img{
-  grid-row:1 / 3;
-  grid-column:1;
-  width:110px; height:auto;
-  display:block;
+/* beeld links in tegels */
+body.mobiel main > section:nth-of-type(1) > article > img {
+  grid-row: 1 / 3;
+  grid-column: 1;
+  width: 110px; /* bewust px behouden */
+  height: auto;
+  display: block;
+  background-color: var(--lightbluebackground-color);
 }
 
-/* titel rechts (h2/a */
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(2) > h2,
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(3) > h2{
-  grid-row:1; grid-column:2;
-  margin:0 0 .25em;
-  font-size:0.95em;
-  font-weight:650;
-  font-family:Arial, Helvetica, sans-serif;
+/* titel rechts */
+body.mobiel main > section:nth-of-type(1) > article > h2 {
+  grid-row: 1;
+  grid-column: 2;
+  margin: 0 0 .25em;
+  font-size: .9em;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--brand-darkblue);
 }
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(2) > h2 > a,
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(3) > h2 > a{
-  color:(var(--brand-darkblue));
-  text-decoration:none;
+body.mobiel main > section:nth-of-type(1) > article > h2 > a {
+  color: var(--brand-darkblue);
+  text-decoration: none;
 }
 
-/* beschrijving rechts (p) */
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(2) > p,
-body.mobiel main > section:nth-of-type(1) > article:nth-of-type(3) > p{
-  grid-row:2; grid-column:2;
-  margin:0;
-  color:var(--text);
-  font-size:0.928em;
-  font-family:Arial, Helvetica, sans-serif;
+/* beschrijving rechts */
+body.mobiel main > section:nth-of-type(1) > article > p {
+  grid-row: 2;
+  grid-column: 2;
+  margin: 0;
+  font-size: .93em;
+  color: var(--text-darkgrey);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* SECTIE 2  Merken (Apple, Samsung, OnePlus bla bla) */
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 1b – Merken (Apple, Samsung) */
+/*-------------------------------------------*/
 
-/**********************************************/
-/* MOBIEL: SECTIE 2 – Merken (Apple, Samsung) */
-/**********************************************/
-
-/* de UL is de horizontale scroller */
-body.mobiel main > section:nth-of-type(2) > ul {
+body.mobiel main > section:nth-of-type(1) > ul {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overscroll-behavior-x: contain;
-
-  gap: 0.6rem;           
-  padding: 0 1em;        /* witruimte links n rechts */
-  margin: 2em 0 0;       /* ruimte boven de sectie */
-  scrollbar-width: none; /* verbergt scrollbar */
+  gap: .6em;
+  padding: 0 1em;
+  margin: 2em 0 0;
+  list-style: none;
+  scrollbar-width: none;
 }
 
-/* elk merk-blok */
-body.mobiel main > section:nth-of-type(2) > ul > li {
+/* merk-blok (li) */
+body.mobiel main > section:nth-of-type(1) > ul > li {
   flex: 0 0 auto;
   scroll-snap-align: center;
-
   display: flex;
-  align-items: center;     /* logo verticaal centreren */
-  justify-content: center; /* logo horizontaal centreren */
-
-  width: 7.5em;            /* vaste breedte */
-  height: 3.45em;          
-  border: 0.02em solid var(--border);
-  border-radius: 0.35em;
+  align-items: center;
+  justify-content: center;
+  width: 7.5em;
+  height: 3.45em;
+  border: .02em solid var(--border);
+  border-radius: .35em;
   background: #fff;
-  padding: 0.3em;
+  padding: .3em;
   box-sizing: border-box;
 }
 
-
-
-
-/****************************.........***........../
-/* MOBIEL: SECTIE 3 – 4 blokken, 2 per rij    
-/*******************................................./
-
-/* de UL = container voor de tegels */
-body.mobiel main > section:nth-of-type(3) > ul {
-  display: flex;          
-  flex-wrap: wrap;        /* items mogen doorlopen naar nieuwe regel */
-  gap: 0.8em;             /* ruimte tussen de blokken */
-  margin: 2.5em 1em 1em;  
-  padding: 0;
+/* logo’s */
+body.mobiel main > section:nth-of-type(1) > ul > li > a > img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-/* elk tegelblok */
-body.mobiel main > section:nth-of-type(3) > ul > li {
-  flex: 1 1 calc(50% - 0.8em);  /* 2 blokken naast elkaar, ruimte corrigeert gap */
-  background: var(--panel);
-  border: 0.02em solid var(--border);
+
+
+
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 2 – 4 blokken, 2 per rij   */
+/*-------------------------------------------*/
+
+body.mobiel main > section:nth-of-type(2) > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8em;
+  margin: 2.5em 1em 1em;
+  padding: 0;
+  list-style: none;
+}
+
+/* tegelblok */
+body.mobiel main > section:nth-of-type(2) > ul > li {
+  flex: 1 1 calc(50% - .8em); /* 2 blokken naast elkaar */
+  border: .02em solid var(--border);
   border-radius: .35em;
-  padding: .8em;
-  box-sizing: border-box; /* padding telt mee in breedte */
+  box-sizing: border-box;
   text-align: center;
 }
 
-
-/* link in het blok */
-body.mobiel main > section:nth-of-type(3) > ul > li a {
-  display: block;               /* link vult hele blok */
-  text-decoration: none; 
-  color: var(--brand-darkblue); 
+/* klikbare link */
+body.mobiel main > section:nth-of-type(2) > ul > li a {
+  display: block;
+  text-decoration: none;
+  color: var(--brand-darkblue);
 }
 
-/* afbeelding in het blok */
-body.mobiel main > section:nth-of-type(3) > ul > li img {
-  display: block;     /* haalt inline-afstand weg, maakt img "blok" */
-  width: 100%;        
-  border-radius: .25em;
-  margin: 0 0 .6em;   /* ruimte onder de afbeelding */
+/* afbeelding */
+body.mobiel main > section:nth-of-type(2) > ul > li img {
+  display: block;
+  width: 100%;
+  border-radius: .3em .3em 0 0;
 }
 
-/* titel in het blok */
-body.mobiel main > section:nth-of-type(3) > ul > li h3 {
-  margin: .2em 0 0;
-  font-size: 0.9em;
-  font-weight: 650;
+/* titel */
+body.mobiel main > section:nth-of-type(2) > ul > li h3 {
+  margin: .5em 0;
+  font-size: .85em;
+  font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(var(--brand-darkblue));
+  color: var(--brand-darkblue);
 }
 
 
-/* MOBIEL: SECTIE 4 – Advies (slider) */
-body.mobiel main > section:nth-of-type(4) > h2 {
-  margin: 1em;
+
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 3 – Advies (slider) */
+/*-------------------------------------------*/
+
+body.mobiel main > section:nth-of-type(3) > h2 {
+  margin: 1.5em 1em 1em;
   font-size: 1.05em;
-  font-weight: 650;
-  color: var(--text);
+  font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 1.5em;
-
+  color: var(--text);
 }
 
-/*horizonatel scrollijst*/ 
-body.mobiel main > section:nth-of-type(4) > ul {
+/* horizontale scroller */
+body.mobiel main > section:nth-of-type(3) > ul {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -1259,15 +1354,17 @@ body.mobiel main > section:nth-of-type(4) > ul {
   overscroll-behavior-x: contain;
   gap: 1em;
   padding: 0 1em 1em;
+  margin: 0;
+  list-style: none;
   scrollbar-width: none;
 }
 
-
-body.mobiel main > section:nth-of-type(4) > ul > li {
+/* slide */
+body.mobiel main > section:nth-of-type(3) > ul > li {
   flex: 0 0 80%;
   scroll-snap-align: center;
-  background: #fff;
-  border: 0.02em solid var(--border);
+  background: var(--bg);
+  border: .02em solid var(--border);
   border-radius: .2em;
   overflow: hidden;
   box-sizing: border-box;
@@ -1275,44 +1372,43 @@ body.mobiel main > section:nth-of-type(4) > ul > li {
   flex-direction: column;
 }
 
-/* afbeelding  */
-body.mobiel main > section:nth-of-type(4) > ul > li img {
+/* afbeelding */
+body.mobiel main > section:nth-of-type(3) > ul > li img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0;  
-  margin: 0;           
+  margin: 0;
 }
 
 /* titel */
-body.mobiel main > section:nth-of-type(4) > ul > li h3 {
-  text-decoration: none;
+body.mobiel main > section:nth-of-type(3) > ul > li h3 {
   margin: .6em .8em .3em;
   font-size: .85em;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--brand-darkblue);
 }
-body.mobiel main > section:nth-of-type(4) > ul > li a {
-text-decoration: none;
+
+/* klikbare link */
+body.mobiel main > section:nth-of-type(3) > ul > li a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* tekst donkerder grijs */
-body.mobiel main > section:nth-of-type(4) > ul > li p {
+/* tekst */
+body.mobiel main > section:nth-of-type(3) > ul > li p {
   margin: 0 .8em 1em;
-  font-size: 0.85em;
+  font-size: .85em;
   font-family: Arial, Helvetica, sans-serif;
-  color: #252c36;   
+  color: var(--text-darkgrey);
 }
 
-
-
-
-
-/* MOBIEL: SECTIE 5 – Vergelijk verschillende telefoons */
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 4 – Vergelijk verschillende telefoons */
+/*-------------------------------------------*/
 
 /* sectie-titel */
-body.mobiel main > section:nth-of-type(5) > h2 {
+body.mobiel main > section:nth-of-type(4) > h2 {
   margin: 1em;
   font-size: 1.05em;
   font-weight: 650;
@@ -1321,7 +1417,7 @@ body.mobiel main > section:nth-of-type(5) > h2 {
 }
 
 /* horizontale slider */
-body.mobiel main > section:nth-of-type(5) > ul {
+body.mobiel main > section:nth-of-type(4) > ul {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -1333,30 +1429,25 @@ body.mobiel main > section:nth-of-type(5) > ul {
   scrollbar-width: none;         
 }
 
-
-/* ALGEMEEN VOOR ALLE TELEFOON-KAARTEN.........*/
-
-
-
 /* elke slide (telefoonkaart) */
-body.mobiel main > section:nth-of-type(5) > ul > li {
+body.mobiel main > section:nth-of-type(4) > ul > li {
   flex: 0 0 87%; 
   scroll-snap-align: center;
 }
 
 /* kaart zelf */
-body.mobiel main > section:nth-of-type(5) > ul > li > article {
-  background: #fff;
+body.mobiel main > section:nth-of-type(4) > ul > li > article {
+  background: var(--bg);
   border-radius: 0.5em;
   padding: 1em;
   display: flex;
-  flex-direction: column; /* items onder elkaar*/
+  flex-direction: column;
   gap: 0.6em;
   margin-left: -.8em;
 }
 
 /* productfoto bovenaan */
-body.mobiel main > section:nth-of-type(5) > ul > li > article > img {
+body.mobiel main > section:nth-of-type(4) > ul > li > article > img {
   width: 90%;
   max-height: 10.5em;
   object-fit: contain;
@@ -1365,37 +1456,44 @@ body.mobiel main > section:nth-of-type(5) > ul > li > article > img {
 }
 
 /* titel van het toestel */
-body.mobiel main > section:nth-of-type(5) > ul > li > article > :first-of-type h3 {
+body.mobiel main > section:nth-of-type(4) > ul > li > article > :first-of-type h3 {
   font-size: .95em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--brand-blue);
   margin: -.6em 0;
- 
 }
 
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) > article > a > h3 {
+  font-size: .95em;
+  font-weight: 650;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--brand-blue);
+  margin-top: 5.9em
 
-body.mobiel main > section:nth-of-type(5) > ul > li > article a {
+}
+
+body.mobiel main > section:nth-of-type(4) > ul > li > article a {
   text-decoration: none;
   color: inherit;
 }
 
 
-
-/* SAMSUNG Galaxy S25 Ultra – kaart 1........*/
-
+/*-------------------------------------------*/
+/* SAMSUNG Galaxy S25 Ultra – kaart 1 */
+/*-------------------------------------------*/
 
 /* kleur-label */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > p:first-of-type {
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > p:first-of-type {
   font-size: .85em;
   font-weight: 550;
-  color: #000;
+  color: var(--text);
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* 4 kleur-varianten telefoon samsung */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:first-of-type {
+/* 4 kleur-varianten */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > ul:first-of-type {
   display: flex;
   gap: .7em;
   margin: .4em 0;
@@ -1403,48 +1501,37 @@ body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > u
   list-style: none;
 }
 
-
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:first-of-type li button {
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > ul:first-of-type li button {
   background: none;
   border: none;
   padding: 0;
 }
 
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:first-of-type li button img {
-  width: 3.8em;   /* thumbnails klein */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > ul:first-of-type li button img {
+  width: 3.8em;
   height: 3.8em;
   border: 1px solid var(--border);
   border-radius: .3em;
   padding: .4em;
-  
 }
 
-/* specs-lijst (de tweede UL in dit article!) */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:nth-of-type(2) {
+/* specs-lijst (2e ul in dit article) */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > ul:nth-of-type(2) {
   display: flex;
   flex-direction: column;
   padding: 0;
   list-style: none;
-  margin: .6em 0 0 0; /* iets luchtiger */
+  margin: .6em 0;
 }
 
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:nth-of-type(2) li {
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > ul:nth-of-type(2) li {
   display: flex;
-  gap: .4em;
   font-size: .9em;
-  line-height: 1.4;
-  color: #374151;
-}
-
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > ul:nth-of-type(2) svg {
-  flex-shrink: 0;
-  width: 1.2em;
-  height: 1.2em;
-  fill: rgb(88, 196, 88);
+  color: var(--text-darkgrey);
 }
 
 /* titel Samsung */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > h3 {
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) > article > h3 {
   font-size: .95em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
@@ -1453,148 +1540,88 @@ body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) > article > h
 }
 
 
-/**********************************************/
-/* XIAOMI 14 – kaart 2                        */
-/**********************************************/
+/*-------------------------------------------*/
+/* XIAOMI 14 – kaart 2 */
+/*-------------------------------------------*/
 
-/* kleur-label */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) > article > p:first-of-type {
-  font-size: .85em;
-  font-weight: 600;
-  color: #000;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-/* specs-lijst (enige UL in dit article) */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) > article > ul {
+
+/* specs-lijst */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) > article > ul {
   display: flex;
   flex-direction: column;
   gap: .5em;
-  margin: .6em 0 0 0;
+  margin: .9em 0 0;
   padding: 0;
   list-style: none;
-}
-
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) > article > ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: .4em;
-  font-size: .9em;
-  line-height: 1.4;
-  color: #374151;
-}
-
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) > article > ul svg {
-  flex-shrink: 0;
-  width: 1.2em;
-  height: 1.2em;
-  fill: rgb(88, 196, 88);
-}
-
-/* titel Xiaomi */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) > article > h3 {
-  font-size: .95em;
-  font-weight: 650;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--brand-darkblue);
-  margin: .6em 0 .4em 0;
-}
-/* ============================= */
-/* SAMSUNG kaart 1 – teksten en icons */
-/* ============================= */
-
-/* specs-lijst tekst */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) article > ul:nth-of-type(2) li p {
-  font-size: .94em;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #374151;     /* donkergrijs */
-  line-height: 1.4;
-  margin: .3em 0;
-  display: flex;
-  align-items: flex-start;
-  gap: .5em;
-}
-
-/* specs-lijst icoontjes */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) article > ul:nth-of-type(2) li p svg {
-  flex-shrink: 0;
-  width: 1.8em;
-  height: 1.8em;
-  fill: #22c55e;   /* groen */
-  margin-top: .2em;
-}
-/* specs-lijst tekst Xiaomi */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) article > ul li p {
-  font-size: .94em;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #374151;     /* donkergrijs */
-  line-height: 1.4;
-  margin: .3em 0;
-  display: flex;
-  align-items: flex-start;
-  gap: .5em;
-}
-
-/* specs-lijst icoontjes Xiaomi */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) article > ul li p svg {
-  flex-shrink: 0;
-  width: 1.8em;
-  height: 1.8em;
-  fill: #22c55e;   /* groen */
-  margin-top: .2em;
-}
-
-/**********************************************/
-/* XIAOMI 14 – extra losse selectors          */
-/**********************************************/
-
-/* Titel (h3) */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) article > h3 {
-  font-size: 1em;
-  font-weight: 650;
-  color: var(--brand-darkblue);
-  margin: .6em 0 .4em 0;
-  font-family: Arial, Helvetica, sans-serif;
   
 }
 
-/* Kleur: Zwart */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) article > p:first-of-type {
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) > article > ul li {
+  display: flex;
+  gap: .4em;
   font-size: .9em;
-  color: #000;
-  margin: .3em 0;
-  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  color: var(--text-darkgrey);
+  
 }
 
-/**********************************************/
-/* PRIJZEN – Samsung + Xiaomi                 */
-/**********************************************/
 
-/* Samsung prijs */
-body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(1) article > p:last-of-type, 
-  body.mobiel main > section:nth-of-type(5) > ul > li:nth-of-type(2) article > p:last-of-type {
+
+/* specs-lijst tekst Samsung */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) article > ul:nth-of-type(2) li p {
+  font-size: .94em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-darkgrey);    
+  line-height: 1.4;
+  margin: .3em 0;
+  display: flex;
+  align-items: flex-start;
+  gap: .5em;
+}
+
+/* specs-lijst icoontjes Samsung */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) article > ul:nth-of-type(2) li p svg {
+  width: 1.6em;
+  height: 1.4em;
+  margin-top: .2em;
+  flex-shrink: 0;
+  
+}
+
+
+/* specs-lijst tekst Xiaomi */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) article > ul li p {
+  font-size: .94em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-darkgrey);
+  margin: .1em 0;
+  display: flex;
+  gap: .5em;
+  
+  
+}
+
+/* specs-lijst icoontjes Xiaomi */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) article > ul li p svg {
+  width: 1.4em;
+  height: 1.4em;
+  flex-shrink: 0;
+  
+}
+
+/* prijzen (Samsung + Xiaomi) */
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(1) article > p:nth-of-type(2), 
+body.mobiel main > section:nth-of-type(4) > ul > li:nth-of-type(2) article > p:first-of-type {
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
   margin: .6em 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* CTA link */
-body.mobiel main > section:nth-of-type(5) > ul > li > article > a:last-of-type {
+/* link onder kaarten */
+body.mobiel main > section:nth-of-type(4) > ul > li > article > a:last-of-type {
   color: var(--brand-blue);
   font-weight: 360;
   text-decoration: none;
@@ -1604,87 +1631,97 @@ body.mobiel main > section:nth-of-type(5) > ul > li > article > a:last-of-type {
 }
 
 
-
-
-/* usp-balk */
-body.mobiel main > section:nth-of-type(5) > p {
+/* balk onderaan */
+body.mobiel main > section:nth-of-type(4) > p {
   margin: 1em;
   font-size: .9em;
-  font-weight: 600;
   text-align: center;
   color: var(--text);
   border-top: .1em solid var(--border);
-  padding: .9em 0 .9em;
+  padding: .9em 0;
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: .1em solid var(--border);
-  
+}
+
+strong { color: var(--brand-orange); font-weight: 700;font-size: 1.0em; }
+body.mobiel main > section:nth-of-type(4) > p > svg {
+  width: 1.2em;   /* of je eigen maat */
+  height: 1.2em;
+  margin-right: .3em;
+  vertical-align: middle;
 }
 
 
 
-/* MOBIEL: Sectie 6 – De nieuwste mobiele telefoon.............................*/
 
+
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 5 – De nieuwste telefoon */
+/*-------------------------------------------*/
 
 /* sectietitel */
-body.mobiel main > section:nth-of-type(6) > h2 {
+body.mobiel main > section:nth-of-type(5) > h2 {
   margin: 1em;
   font-size: 1.1em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(var(--brand-darkblue));
+  color: var(--text);
 }
 
-
-/* grote afbeelding direct onder de titel */
-body.mobiel main > section:nth-of-type(6) > img {
+/* grote afbeelding */
+body.mobiel main > section:nth-of-type(5) > img {
   width: 90%;
   height: auto;
   display: block;
   border-radius: .4em;
-  margin-bottom: 1em;
-  margin-left: 1.1em;
-  
+  margin: 0 1.1em 1em;
 }
 
-/* subtitel (onder de afbeelding) */
-body.mobiel main > section:nth-of-type(6) > h3 {
+/* subtitel */
+body.mobiel main > section:nth-of-type(5) > h3 {
   margin: 0 1em .5em;
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(var(--brand-darkblue));
+  color: var(--brand-darkblue);
 }
 
-/* tekstparagrafen in de introductie */
-body.mobiel main > section:nth-of-type(6) > p {
+/* tekst */
+body.mobiel main > section:nth-of-type(5) > p {
   margin: 0 1em .8em;
   font-size: .9em;
   line-height: 1.4;
   font-family: Arial, Helvetica, sans-serif;
-  color: #374151;
+  color: var(--text-darkgrey);
 }
 
-/* link onder de introductietekst */
-body.mobiel main > section:nth-of-type(6) > p > a {
+/* link */
+body.mobiel main > section:nth-of-type(5) > p > a {
   color: var(--brand-blue);
   text-decoration: none;
-  font-weight: 600;
+}
+
+/* link-icoon */
+body.mobiel main > section:nth-of-type(5) > p:nth-of-type(2) > a > svg {
+  width: 1.2em;
+  height: 1em;
+  margin-right: .2em;
+  vertical-align: middle;
+  margin-top: -.1em;
 }
 
 
+/*-------------------------------------------*/
+/* MOBIEL: SECTIE 6 – Productkaart */
+/*-------------------------------------------*/
 
-
-/* productblok.................................................. */
-/* productkaart.................................................. */
-
-body.mobiel main > section:nth-of-type(6) > article {
+body.mobiel main > section:nth-of-type(5) article {
   width: 92%;
   margin: 1em;
-  padding: .8em;
+  padding: 1.4em;
   border: 0.09em solid var(--border);
   border-radius: .5em;
-  background: #fff;
-
+  background: var(--bg);
   display: grid;
   grid-template-columns: 6.25em 1fr; 
   column-gap: .8em;
@@ -1693,7 +1730,7 @@ body.mobiel main > section:nth-of-type(6) > article {
 }
 
 /* productafbeelding links */
-body.mobiel main > section:nth-of-type(6) > article > img {
+body.mobiel main > section:nth-of-type(5) article > img {
   width: 6.25em; 
   height: auto;
   display: block;
@@ -1703,39 +1740,38 @@ body.mobiel main > section:nth-of-type(6) > article > img {
 }
 
 /* titel rechts */
-body.mobiel main > section:nth-of-type(6) > article > h3 {
+body.mobiel main > section:nth-of-type(5) article > h3 {
   grid-column: 2;
   margin: .1em 0 .25em 0;
   font-size: .95em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--brand-blue)
+  color: var(--brand-blue);
 }
 
 /* reviews */
-body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(1) {
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(1) {
   grid-column: 2;
-  margin: 0 0 .25em 0;
-  font-size: .81em;
+  margin: 0 0 .4em 0;
+  font-size: 0.81em;
   color: var(--brand-blue);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* prijs */
-body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(2) {
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(2) {
   grid-column: 2;
   margin: .45em 0 .25em 0;
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color:var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  display: block;
 }
 
 /* levering info */
-body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(3) {
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(3) {
   grid-column: 2;
-  margin: 0 0 .4em 0;
+  margin: 0 0 .4em;
   font-size: .86em;
   color: #008500;
   font-family: Arial, Helvetica, sans-serif;
@@ -1743,101 +1779,50 @@ body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(3) {
 }
 
 /* winkelwagen-knop */
-body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(4) {
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(4) {
   
-  margin: .2em 0 0 0;
+  margin: .2em 0 0;
   grid-row: 4;
   margin-left: 4.0em;
 }
 
-
-body.mobiel main > section:nth-of-type(6) > article > p:nth-of-type(4) > a {
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(4) > a {
   display: inline-block;
   padding: .55em 1em;
   border-radius: .40em;
-  background: #00b900; /* groen */
-  color: #fff;
+  background: var(--icon-kleuren);
+  color: var(--bg);
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  margin-left: 12em;
-  margin-top: -2.5em;
+margin-left: 12em;
+margin-top: -2.5em;
+}
+
+/* review-iconen */
+body.mobiel main > section:nth-of-type(5) article > p:nth-of-type(1) svg {
+  height: 1.3em;
+  width: 1.3em;
 }
 
 
-/* MOBIEL: Sectie 7 – Productkaart */
 
-body.mobiel main > section:nth-of-type(7) > article{
-  /* blok: 343 x 178, maar schaalt netjes op mobiel */
-  width:calc(100% - 2em);
-  max-width:343px;
-  min-height:178px;
 
-  margin:0 1em 1em;                 /* witruimte links/rechts */
-  padding:.6em .7em;                 /* compacte binnenruimte */
-  border:0.02em solid var(--border); /* dunne lijn zoals elders */
-  border-radius:.5em;
-  background:#fff;
 
-  display:grid;
-  grid-template-columns:100px 1fr;   /* links beeld (±89–100), rechts tekst */
-  grid-auto-rows:auto;               /* rijen groeien op inhoud */
-  column-gap:.8em;
-  align-items:start;
-  box-sizing:border-box;
-}
 
-/* productbeeld links  */
-body.mobiel main > section:nth-of-type(7) > article > img{
-  width:89px; height:100px;
-  object-fit:contain;
-  display:block;
-  border-radius:.35em;
-  grid-column:1;
-  grid-row:1 / span 3;               /* beeld over eerste 3 rijen */
-}
-
-/* (optioneel) badge onder de afbeelding – voeg in HTML toe:
-   <p class="badge">Aanbieding</p>  */
-body.mobiel main > section:nth-of-type(7) > article > p.badge{
-  grid-column:1;
-  grid-row:auto;
-  align-self:start;
-  margin:.4em 0 0 0;
-  font-size:.78em;
-  font-weight:700;
-  color:var(--brand-orange);
-  background:#FFE8D9;                /* licht oranje */
-  padding:.12em .5em;
-  border-radius:.4em;
-}
-
-/* titel rechts (blauw) */
-body.mobiel main > section:nth-of-type(7) > article > h3{
-  grid-column:2; grid-row:1;
-  margin:.1em 0 .25em 0;
-  font-size:.95em;
-  font-weight:650;
-  font-family:Arial, Helvetica, sans-serif;
-  color:rgb(var(--brand-darkblue));
-}
-
-/***************************************************/
-/* MOBIEL: Sectie 7 – Ontdek de nieuwste telefoons */
-/***************************************************/
-
+/* MOBIEL: Sectie 7 – Ontdek de nieuwste telefoons------------------ */
 
 /* sectie-titel */
-body.mobiel main > section:nth-of-type(7) > h3 {
+body.mobiel main > section:nth-of-type(6) > h3 {
   margin: 1em;
   font-size: 1.05em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
-  color: #000; /* zelfde zwart als 'Best verkocht' */
+  color: var(--text); 
 }
 
 /* horizontale carrousel */
-body.mobiel main > section:nth-of-type(7) > ul {
+body.mobiel main > section:nth-of-type(6) > ul {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -1852,13 +1837,13 @@ body.mobiel main > section:nth-of-type(7) > ul {
 }
 
 /* slides */
-body.mobiel main > section:nth-of-type(7) > ul > li {
+body.mobiel main > section:nth-of-type(6) > ul > li {
   flex: 0 0 70%;               
   scroll-snap-align: center;
 }
 
 /* kaart */
-body.mobiel main > section:nth-of-type(7) > ul > li > a {
+body.mobiel main > section:nth-of-type(6) > ul > li > a {
   display: block;
   padding: 1em 0;
   text-decoration: none;
@@ -1866,26 +1851,26 @@ body.mobiel main > section:nth-of-type(7) > ul > li > a {
 }
 
 /* standaard afbeelding */
-body.mobiel main > section:nth-of-type(7) > ul > li > a > img {
-  width: 8.75em;   /* 140px bij 16px/em */
+body.mobiel main > section:nth-of-type(6) > ul > li > a > img {
+  width: 8.75em;   
   height: auto;
   display: block;
   border-radius: .3em;
-  margin: 0 auto .1em auto; /* centreren */
+  margin: 0 auto .1em;
 }
 
 /* Samsung Galaxy S24 FE (3e item) */
-body.mobiel main > section:nth-of-type(7) > ul > li:nth-of-type(3) > a > img {
+body.mobiel main > section:nth-of-type(6) > ul > li:nth-of-type(3) > a > img {
   width: 7.5em;
 }
 
 /* Motorola Edge (4e item) */
-body.mobiel main > section:nth-of-type(7) > ul > li:nth-of-type(4) > a > img {
+body.mobiel main > section:nth-of-type(6) > ul > li:nth-of-type(4) > a > img {
   width: 6.5em;
 }
 
 /* titel */
-body.mobiel main > section:nth-of-type(7) > ul > li > a > h4 {
+body.mobiel main > section:nth-of-type(6) > ul > li > a > h4 {
   font-size: 1.02em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
@@ -1893,10 +1878,10 @@ body.mobiel main > section:nth-of-type(7) > ul > li > a > h4 {
 }
 
 /* reviews (met sterren + tekst) */
-body.mobiel main > section:nth-of-type(7) > ul > li > a > p:first-of-type {
+body.mobiel main > section:nth-of-type(6) > ul > li > a > p:first-of-type {
   display: flex;
   align-items: center;
-  gap: 0em;                     /* ruimte tussen sterren en tekst */
+  gap: .2em;                     
   color: var(--brand-blue);
   font-size: .9em;
   text-decoration: none;
@@ -1905,69 +1890,86 @@ body.mobiel main > section:nth-of-type(7) > ul > li > a > p:first-of-type {
 }
 
 /* individuele sterren */
-body.mobiel main > section:nth-of-type(7) > ul > li > a > p:first-of-type svg {
-  flex: 0 0 auto;
-  width: 2.4em;
-  
-  
-
+body.mobiel main > section:nth-of-type(6) > ul > li > a > p:first-of-type svg {
+ 
+  height: 1.3em;
+  width: 1.3em;
+ 
 }
 
 /* prijs */
-body.mobiel main > section:nth-of-type(7) > ul > li > a > p:last-of-type {
+body.mobiel main > section:nth-of-type(6) > ul > li > a > p:last-of-type {
   margin-top: 1em;
-  color: #000;
+  color: var(--text);
   font-weight: 700;
   font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/****************************************************/
-/* MOBIEL: Sectie 8 – BDOSTV blok                   */
-/****************************************************/
-body.mobiel main > section:nth-of-type(8){
+/*--------------------------------------------*/
+/* MOBIEL: Sectie 7 – BDOSTV blok                   */
+/*--------------------------------------------*/
+
+
+body.mobiel main > section:nth-of-type(7){
   margin: 1.2em 1em;
   margin-top: -3em;
 }
 
-body.mobiel main > section:nth-of-type(8) > h3{
+body.mobiel main > section:nth-of-type(7) > h3{
   margin: .8em 0 .3em 0;
   font-size: .95em;
   font-weight: 750;
   font-family: Arial, Helvetica, sans-serif;
-  color: #000;
+  color:var(--text);
 }
 
-body.mobiel main > section:nth-of-type(8) > p{
+body.mobiel main > section:nth-of-type(7) > p{
   margin: 0 0 .4em 0;
   font-size: .9em;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body.mobiel main > section:nth-of-type(8) > p > a{
+body.mobiel main > section:nth-of-type(7) > p > a{
   text-decoration: none;
   color: var(--brand-blue);
 }
 
 
 
-/****************************************************/
-/* MOBIEL: Sectie 10 – Eerder bekeken door jou      */
-/* Zelfde structuur als Best verkocht               */
-/****************************************************/
+/*--------------------------------------------*/
+/* MOBIEL: Sectie 8 – Eerder bekeken door jou.-.-.-.-.-.-.-.-.-.-.-..-.-.-.-.-.-*/
+/*--------------------------------------------*/
+
+/* Alle reviewregels (de p waar de sterren + aantal reviews in staan) */
+body.mobiel main > section:nth-of-type(8) > ul > li > a > p svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0; /* voorkomt dat de sterretjes geplet worden */
+  fill: var(--icon-kleuren);  /* groen zoals in jouw HTML */
+}
+
+/* de p zelf op flex zetten */
+body.mobiel main > section:nth-of-type(8) > ul > li > a > p {
+  display: flex;
+  align-items: center;
+  gap: .3em; /* ruimte tussen sterren en tekst */
+  flex-wrap: wrap; /* mocht het krap worden, dan netjes afbreken */
+}
+
 
 /* titel */
-body.mobiel main > section:nth-of-type(10) > h2{
+body.mobiel main > section:nth-of-type(8) > h2{
   margin: 1em;
   font-size: 1.05em;
   font-weight: 650;
   font-family: Arial, Helvetica, sans-serif;
-  color: #000;
+  color: var(--text);
 }
 
 /* horizontale carrousel */
-body.mobiel main > section:nth-of-type(10) > ul{
+body.mobiel main > section:nth-of-type(8) > ul{
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -1979,107 +1981,25 @@ body.mobiel main > section:nth-of-type(10) > ul{
   list-style: none;
   scrollbar-width: none;
 }
-body.mobiel main > section:nth-of-type(10) > ul::-webkit-scrollbar{
-  display: none;
-}
 
 /* elke slide */
-body.mobiel main > section:nth-of-type(10) > ul > li{
+body.mobiel main > section:nth-of-type(8) > ul > li{
   flex: 0 0 85%;
   scroll-snap-align: center;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 1em;
 }
 
 /* klikbare kaart */
-body.mobiel main > section:nth-of-type(10) > ul > li > a{
+body.mobiel main > section:nth-of-type(8) > ul > li > a{
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
-/* afbeelding */
-body.mobiel main > section:nth-of-type(10) > ul > li > a > img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: .3em;
-  margin-bottom: .6em;
-  border: 0.02em solid var(--border);
-  background: #fff;
-}
-
-/* titel */
-body.mobiel main > section:nth-of-type(10) > ul > li > a > h3{
-  font-size: .95em;
-  font-weight: 650;
-  color: rgb(var(--brand-darkblue));
-  margin: .4em 0 .6em 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* subtiele beschrijvingen / reviews */
-body.mobiel main > section:nth-of-type(10) > ul > li > a > p{
-  margin: 0 0 .4em 0;
-  font-size: .85em;
-  color: #374151;
-}
-body.mobiel main > section:nth-of-type(10) > ul > li > a > p:nth-of-type(2){
-  color: var(--brand-blue); /* reviews-blauw */
-  text-decoration: underline;
-}
-body.mobiel main > section:nth-of-type(10) > ul > li > a > p:last-of-type{
-  font-weight: 700;
-  font-size: 1em;
-  color: #111;
-}
-
-/***************************************************/
-/* MOBIEL: Sectie 9 – Eerder bekeken door jou      */
-/***************************************************/
-
-/* titel */
-body.mobiel main > section:nth-of-type(9) > h2 {
-  margin: 1em;
-  font-size: 1.05em;
-  font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #000;
-}
-
-/* horizontale carrousel */
-body.mobiel main > section:nth-of-type(9) > ul {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  padding: 0 1em;
-  list-style: none;
-  margin: 0;
-  scrollbar-width: none;
-}
-
-/* elke slide */
-body.mobiel main > section:nth-of-type(9) > ul > li {
-  flex: 0 0 85%;
-  scroll-snap-align: center;
-  border-bottom: 1px solid rgba(0,0,0,.15);
-  padding-bottom: 1em;
-}
-
-/* klikbare kaart */
-body.mobiel main > section:nth-of-type(9) > ul > li > a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: thin;
-}
 
 /* afbeelding */
-body.mobiel main > section:nth-of-type(9) > ul > li > a > img {
+body.mobiel main > section:nth-of-type(8) > ul > li > a > img {
   width: 140px;
   height: auto;
   display: block;
@@ -2087,10 +2007,38 @@ body.mobiel main > section:nth-of-type(9) > ul > li > a > img {
   border-radius: .3em;
 }
 
-/* ================================================= */
+
+
+/* titel */
+body.mobiel main > section:nth-of-type(8) > ul > li > a > h3{
+  font-size: .95em;
+  font-weight: 650;
+  color: var(--brand-darkblue);
+  margin: .4em 0 .6em 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* subtiele beschrijvingen / reviews */
+body.mobiel main > section:nth-of-type(8) > ul > li > a > p{
+  margin: 0 0 .4em 0;
+  font-size: .85em;
+  color: var(--text-darkgrey);
+}
+body.mobiel main > section:nth-of-type(8) > ul > li > a > p:nth-of-type(1){
+  color: var(--brand-blue); /* reviews-blauw */
+  text-decoration: none;
+}
+body.mobiel main > section:nth-of-type(8) > ul > li > a > p:last-of-type{
+  font-weight: 700;
+  font-size: 1em;
+  color: var(--text);
+}
+
+
 /* KAART 1: Samsung Galaxy A56 + bundelvoordeel       */
-/* ================================================= */
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:first-of-type {
+
+
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > p:first-of-type {
   font-size: .85em;
   font-weight: 600;
   color: var(--brand-orange);
@@ -2101,157 +2049,149 @@ body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:first-of
   margin: .25em 0 .6em 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > h3 {
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > h3 {
   color: var(--brand-blue);
   font-weight: 650;
   font-size: 1.103em;
   font-family: Arial, Helvetica, sans-serif;
   margin: .4em 0 .6em 0;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:nth-of-type(2) {
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > p:nth-of-type(2) {
   color: var(--brand-blue);
   font-size: .9em;
   margin-top: 0.5em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:nth-of-type(3) {
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > p:nth-of-type(3) {
   color: var(--text);
   font-size: .9em;
   margin-top: 2em;
   font-weight: 200;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:nth-of-type(4) {
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > p:nth-of-type(4) {
   display: inline-block;
   font-size: .85em;
-  color: #6b7280;
+  color: var(--text-grey);
   margin: 0;
   margin-top: -1em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child > a > p:nth-of-type(5) {
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child > a > p:nth-of-type(5) {
   display: inline-block;
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
   margin-left: .6em;
   margin-top: -2em;
 }
 
-/* ================================================= */
-/* KAART 2: Samsung Galaxy S25                       */
-/* ================================================= */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(2) > a > h3 {
-  color: var(--brand-darkblue);
+/* KAART 2: Samsung Galaxy S25.....................................................*/
+
+
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(2) > a > h3 {
+  color: var(--brand-blue);
   font-weight: 650;
   font-size: 1.103em;
-  margin-top: 2.5em;
+  margin-top: 2.7em;
   
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(2) > a > p:nth-of-type(2) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(2) > a > p:nth-of-type(2) {
   color: var(--);
   font-size: .9em;
-  margin-top: 0.5em;
+  margin-top: 2em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(2) > a > p:nth-of-type(3) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(2) > a > p:nth-of-type(3) {
   color: var(--text);
   font-size: .9em;
   margin-top: 0.5em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(2) > a > p:last-of-type {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(2) > a > p:last-of-type {
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
   margin: 0;
 }
 
-/* ================================================= */
-/* KAART 3: iPhone 16                                */
-/* ================================================= */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(3) > a > h3 {
-  color: var(--brand-darkblue);
+/* KAART 3: iPhone 16 .........*/
+
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(3) > a > h3 {
+  color: var(--brand-blue);
   font-weight: 650;
   font-size: 1.103em;
   margin: .4em 0 .6em 0;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(3) > a > p:nth-of-type(2) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(3) > a > p:nth-of-type(2) {
   color: var(--brand-darkblue);
   font-size: .9em;
-  margin-top: 0.5em;
+  margin-top: 3.6em
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(3) > a > p:nth-of-type(3) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(3) > a > p:nth-of-type(3) {
   color: var(--text);
   font-size: .9em;
   margin-top: 0.5em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(3) > a > p:last-of-type {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(3) > a > p:last-of-type {
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
   margin: 0;
 }
 
-/* ================================================= */
-/* KAART 4: Xiaomi 14                                */
-/* ================================================= */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) > a > h3 {
-  color: var(--brand-darkblue);
+ 
+/* KAART 4: Xiaomi 14 ........................ */
+
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(4) > a > h3 {
+  color: var(--brand-blue);
   font-weight: 650;
   font-size: 1.103em;
   margin-top: .8em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) > a > p:nth-of-type(2) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(4) > a > p:nth-of-type(2) {
   color: var(--brand-darkblue);
   font-size: .9em;
-  margin-top: 0.5em;
+  margin-top: 3.6em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) > a > p:nth-of-type(3) {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(4) > a > p:nth-of-type(3) {
   color: var(--text);
   font-size: .9em;
   margin-top: 0.5em;
 }
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) > a > p:last-of-type {
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(4) > a > p:last-of-type {
   font-size: 1em;
   font-weight: 700;
-  color: #111;
+  color:var(--text);
   margin: 0;
 }
 
-/********************************************/
-/* Sectie 9 – SVG iconen per kaart          */
-/********************************************/
 
-/* === KAART 1 – Samsung bundelvoordeel === */
-body.mobiel main > section:nth-of-type(9) > ul > li:first-child svg {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  margin-right: .2em; /* evt. ruimte tussen sterren en tekst */
-  margin-top: -1.4em ;
+/* Sectie 9 – SVG iconen per kaart.....................................................  */
+
+
+/*  KAART 1 – Samsung bundelvoordeel*/
+body.mobiel main > section:nth-of-type(8) > ul > li:first-child svg {
+  height: 1.3em;
+  width: 1.3em;
+  display: flex;
   
 }
 
-/* === KAART 2 – Samsung S25 === */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(2) svg {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  margin-right: .2em;
+/* KAART 2 – Samsung S2*/
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(2) svg {
+  height: 1.3em;
+  width: 1.3em;
+  display: flex;
 }
 
-/* === KAART 3 – iPhone === */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(3) svg {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  margin-right: .2em;
+/*KAART 3 – iPhone*/
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(3) svg {
+  height: 1.3em;
+  width: 1.3em;
+  display: flex;
 }
-
-/* === KAART 4 – Xiaomi === */
-body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) svg {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  margin-right: .2em;
+/* KAART 4 – Xiaomi */
+body.mobiel main > section:nth-of-type(8) > ul > li:nth-of-type(4) svg {
+  height: 1.3em;
+  width: 1.3em;
+  display: flex;
 }
-
 
 
 .cart-icon {
@@ -2262,4 +2202,38 @@ body.mobiel main > section:nth-of-type(9) > ul > li:nth-of-type(4) svg {
 .cart-icon.clicked {
   transform: scale(1.2) rotate(-15deg);
   fill: #ff6600; /* oranje bij klik */
+}
+.cart-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--brand-blue);     
+  color: var(--bg);
+  padding: .8em 1.2em;
+  border-radius: .4em;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 2000;
+}
+
+.cart-popup.show {
+  display: block;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
