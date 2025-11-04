@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
 
 </head>
@@ -13,16 +15,117 @@
 
   <header>
     <nav>
-      <button type="button" class="menu-open">☰</button>
-      <div class="menu-panel">
-        <button type="button" class="menu-close">✕</button>
-        <ul>
-          <li><a href="/computers">Computers & tablets</a></li>
-          <li><a href="/beeld">Beeld & geluid</a></li>
-          <li><a href="/telefonie">Telefonie</a></li>
-          <li><a href="/huishouden">Huishouden & wonen</a></li>
-        </ul>
-      </div>
+       <!-- Menu open knop -->
+		  <button type="button" class="menu-open">☰</button>
+		  <!-- Menu-paneel -->
+		  <div class="menu-panel">
+			<section class="menu-header">
+				<h2>Menu</h2>
+				<button type="button" class="menu-close">✕</button>
+			  </section>
+			  
+			<!-- niveau 1 van het hamburgermenu -->
+			<ul class="menu-level level-1 actief">
+				<li>
+				  <a href="#" data-target="level-2-computers">
+					<img src="images/computersentablets.png" alt="computers en tablets">
+					<span>Computers & tablets</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem"
+					  height="1.6rem" aria-hidden="true">
+					  <path fill-rule="evenodd"
+						d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445">
+					  </path>
+					</svg>
+				  </a>
+				</li>
+				<li><a href="#"><img src="images/telefonie.png" alt="">Telefonie<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/beeldengeluid.png" alt="">Beeld & geluid<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/huishouden&wonen.png" alt="">Zakelijk & thuiswerken<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/huishouden.keuken.png" alt="">Keuken<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/verzorrging.png" alt="">Sport & verzorging<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/camera.png" alt="">Foto & video<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/coolbluekorting.png" alt="">Coolblue Energie<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li><a href="#"><img src="images/actie-merken.png" alt="">Acties & merken<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+				<li>
+					<a href="#">
+					  Taal: Nederlands (NL)
+					  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem"
+						height="1.6rem" aria-hidden="true">
+						<path fill-rule="evenodd"
+						  d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path>
+					  </svg>
+					</a>
+				  </li>
+				  <li><a href="#">Mijn Coolblue</a></li>
+				  <li><a href="#">Klantenservice</a></li>
+				  <li><a href="#">Zakelijk</a></li>
+			  </ul>
+  
+
+			<!-- niveau 2 van het hamburger menu -->
+			<ul class="menu-level level-2 level-2-computers">
+				<li>
+					<button class="menu-back">
+					  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="0.8em" aria-hidden="true" style="transform: rotate(180deg);">
+						<path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path>
+					  </svg>
+					  Alle categorieën
+					</button>
+				  </li>
+				  
+			  <li><a href="#">Laptops, desktops & monitoren<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#" data-target="level-3-gaming">PC Gaming Setup <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Tablets & e-readers<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Netwerk & internet<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Computeronderdelen<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a>
+			  <li><a href="#">Geheugen & opslag<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a>
+			  <li><a href="#">Printers & randapparatuur<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li>
+				<a href="#">
+				  Taal: Nederlands (NL)
+				  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem"
+					height="1.6rem" aria-hidden="true">
+					<path fill-rule="evenodd"
+					  d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path>
+				  </svg>
+				</a>
+			  </li>
+			  <li><a href="#">Mijn Coolblue</a></li>
+			  <li><a href="#">Klantenservice</a></li>
+			  <li><a href="#">Zakelijk</a></li>
+		  </ul>
+
+		  
+			<!-- niveau 3 van het hamburger menu -->
+			<ul class="menu-level level-3 level-3-gaming">
+				<li>
+					<button class="menu-back">
+					  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="0.8em" aria-hidden="true" style="transform: rotate(180deg);">
+						<path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path>
+					  </svg>
+					  Computers en Tablets
+					</button>
+				  </li>
+				  
+			  <li><a href="#">Gaming laptops<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Gaming desktops<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Gaming monitoren<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li><a href="#">Gaming accessoires<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem" height="1.6rem" aria-hidden="true"><path fill-rule="evenodd" d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path></svg></a></li>
+			  <li>
+				<a href="#">
+				  Taal: Nederlands (NL)
+				  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="grey" width="1.0rem"
+					height="1.6rem" aria-hidden="true">
+					<path fill-rule="evenodd"
+					  d="M17.5 10.01c0 .546-.224 1.068-.62 1.444l-7.97 7.58a1.995 1.995 0 0 1-2.75-2.89l6.453-6.137-6.454-6.152A1.995 1.995 0 1 1 8.912.968l7.97 7.597c.395.377.618.899.618 1.445"></path>
+				  </svg>
+				</a>
+			  </li>
+			  <li><a href="#">Mijn Coolblue</a></li>
+			  <li><a href="#">Klantenservice</a></li>
+			  <li><a href="#">Zakelijk</a></li>
+		  </ul>
+		  </div>
 
       <a href="/" class="logo">
         <h1 class="visually-hidden">Coolblue</h1>
